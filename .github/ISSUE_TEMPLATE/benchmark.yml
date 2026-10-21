@@ -1,0 +1,24 @@
+name: QuenchBench result or question
+description: A surprising score, a task you think is unfair, or a question about the leaderboard.
+labels: [quenchbench]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not paste task texts, hidden tests or solutions here: the tasks are kept private so that
+        models cannot be trained on them.
+  - type: textarea
+    id: what
+    attributes:
+      label: What you saw
+      description: The model, its quantization and graphics card, the suite and size, and the score.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it looks wrong (or the question)
+  - type: input
+    id: version
+    attributes:
+      label: Local Quench version

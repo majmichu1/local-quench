@@ -1,0 +1,53 @@
+name: Something does not work
+description: A bug, a crash, or the app doing something it should not.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Issues are public: please leave out API keys, tokens, passwords and private code.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen again
+      placeholder: |
+        1. Open a chat in a Python project
+        2. Ask ...
+        3. ...
+  - type: input
+    id: version
+    attributes:
+      label: Local Quench version
+      description: Settings > General > Installed (filled in when you report from the app).
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: System
+      placeholder: Windows 11 / Ubuntu 24.04 / Bazzite / Android 14 ...
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Model server and model
+      placeholder: LM Studio 0.3.x, Qwen3.8-27B Q4_K_M, 32k context / OpenRouter, ...
+  - type: input
+    id: gpu
+    attributes:
+      label: Graphics card
+      placeholder: RTX 5060 Laptop 8 GB / RX 7900 XTX / Apple M4 Pro / none (cloud model)
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error message or log
+      description: Copy the error text. Check it for keys and private paths first.
+      render: text
