@@ -5,7 +5,7 @@
 <h1 align="center">Local Quench</h1>
 
 <p align="center">
-  A coding agent for the GPU you already have.<br>
+  An AI coding agent for local LLMs, on the GPU you already have.<br>
   Runs your local models in LM Studio, llama.cpp, Ollama or vLLM. Your code stays on your machine.
 </p>
 
@@ -69,6 +69,39 @@ chmod +x LocalQuench-x86_64.AppImage
 Everything is on the [download page](https://localquench.com/download.html) and in the
 [releases](https://github.com/majmichu1/local-quench/releases). The app updates itself.
 
+## Benchmark your model from the command line
+
+`quenchbench.py` runs QuenchBench, SWE-bench Verified, SWE-bench Multilingual, Terminal-Bench 2.0 or
+Aider Polyglot on any model your local server (or a cloud API) serves. It needs only Python 3.9+:
+
+```bash
+curl -O https://raw.githubusercontent.com/majmichu1/local-quench/main/quenchbench.py
+python3 quenchbench.py
+```
+
+It downloads the Local Quench build for your system once, asks which model server, model and
+benchmark to use, and prints every task as it finishes, then the score. Nothing is uploaded. At the end
+it can copy the run into the app, where you can compare it with other runs and share it to the
+[public leaderboard](https://localquench.com/bench.html).
+
+Without questions, e.g. for an overnight run:
+
+```bash
+python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suite forge --size quick --yes
+```
+
+| Benchmark | `--suite` | Needs |
+| --- | --- | --- |
+| QuenchBench: which kinds of coding work the model handles | `forge` (`--size smoke`, `quick` or `full`) | the languages' toolchains (checked before the start) |
+| SWE-bench Verified, 500 Python issues | `swe-verified` | Docker or Podman |
+| SWE-bench Multilingual, 300 issues in 9 languages (beta) | `swe-multilingual` | Docker or Podman |
+| Terminal-Bench 2.0, 89 tasks (beta) | `terminal-bench-2` | Docker or Podman |
+| Aider Polyglot, 225 exercises (beta) | `aider-polyglot` | Docker or Podman |
+
+`--limit 20` runs only the first 20 tasks; `python3 quenchbench.py --help` lists the rest. Cloud
+providers read the key from `NVIDIA_API_KEY` or `OPENROUTER_API_KEY` (or ask for it); it is never
+saved.
+
 ## FAQ
 
 **Is it free?** Yes.
@@ -80,8 +113,8 @@ data sharing, which is off until you say yes, and asks again per benchmark resul
 **Which model should I use?** Open the model advisor in the app, enter your graphics card, and run a
 quick QuenchBench on the candidates. Results on your own hardware beat any leaderboard.
 
-**Is the source code available?** No. This repository holds the releases and the issue tracker. The
-QuenchBench tasks are kept private too, so that new models aren't trained on them.
+**Is the source code available?** No. This repository holds the releases, the issue tracker and the
+benchmark script. The QuenchBench tasks are kept private too, so that new models aren't trained on them.
 
 ## Feedback
 
