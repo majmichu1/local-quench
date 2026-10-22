@@ -1,0 +1,2394 @@
+{
+ "updated": "2026-10-22",
+ "benchmarks": {
+  "swe_verified": {
+   "name": "SWE-bench Verified",
+   "url": "https://www.swebench.com/",
+   "what": "500 human-validated real GitHub issues (Python); % resolved. Official numbers here are the bash-only mini-SWE-agent board unless noted; leaderboard last updated 2026-02."
+  },
+  "swe_pro": {
+   "name": "SWE-bench Pro (public set)",
+   "url": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+   "what": "Harder, long-horizon multi-language repo tasks by Scale AI; % resolved on the public GPL subset."
+  },
+  "swe_multilingual": {
+   "name": "SWE-bench Multilingual",
+   "url": "https://www.swebench.com/multilingual.html",
+   "what": "300 real GitHub issues from 41 repositories in 9 languages (C, C++, Go, Java, JavaScript, TypeScript, PHP, Ruby, Rust); % resolved."
+  },
+  "terminal_bench": {
+   "name": "Terminal-Bench 2.0",
+   "url": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+   "what": "89 hard real-world tasks solved by an agent in a terminal sandbox; % tasks passed. Agent scaffold matters (Terminus 2 is the neutral reference)."
+  },
+  "terminal_bench_4": {
+   "name": "Terminal-Bench 4.0",
+   "url": "https://www.tbench.ai/",
+   "what": "Current (2026) Terminal-Bench version used by frontier vendors; much harder, not comparable to 2.0. Added because 2026-H2 models report only this."
+  },
+  "aider_polyglot": {
+   "name": "Aider Polyglot",
+   "url": "https://aider.chat/docs/leaderboards/",
+   "what": "225 Exercism exercises in 6 languages edited via Aider; % solved within 2 attempts (pass@2). Leaderboard last updated 2025-10."
+  },
+  "livecodebench": {
+   "name": "LiveCodeBench",
+   "url": "https://livecodebench.github.io/leaderboard.html",
+   "what": "Contamination-controlled competitive programming problems; pass@1 %. Official numbers use the v6 window 2024-08..2025-05; vendor numbers mostly 'v6' (2025-02..2025-05 or similar)."
+  },
+  "terminal_bench_2_1": {
+   "name": "Terminal-Bench 2.1",
+   "url": "https://www.tbench.ai/",
+   "what": "Revised Terminal-Bench 2 task set reported by 2026 model cards; close to 2.0 but not identical, so kept separate."
+  }
+ },
+ "models": [
+  {
+   "id": "claude-opus-5-5",
+   "name": "Claude Opus 5.5",
+   "vendor": "Anthropic",
+   "released": "2026-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 64.85
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard: Claude Code, max effort. Anthropic reports 66.4 at xhigh effort with production safeguards on. Anthropic did not publish SWE-bench numbers for this model."
+  },
+  {
+   "id": "claude-sonnet-5-5",
+   "name": "Claude Sonnet 5.5",
+   "vendor": "Anthropic",
+   "released": "2026-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 61.82
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard: Claude Code, max effort. Anthropic's launch page reports 70.6. No SWE-bench numbers published."
+  },
+  {
+   "id": "claude-haiku-5-5",
+   "name": "Claude Haiku 5.5",
+   "vendor": "Anthropic",
+   "released": "2026-10",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 39.2
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.anthropic.com/news/claude-haiku-5-5"
+   },
+   "provenance": {
+    "terminal_bench_4": "vendor"
+   },
+   "notes": "Vendor-reported TB 4.0 pass@1 (max effort per press coverage; 12.8 at low effort). Not yet on the official leaderboard. Anthropic reports Haiku 4.5 at 0.0 on TB 4.0."
+  },
+  {
+   "id": "claude-opus-5",
+   "name": "Claude Opus 5",
+   "vendor": "Anthropic",
+   "released": null,
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 53.94
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard: Claude Code, xhigh effort (max effort scored 51.82). Anthropic reproduces 52.3. Release month not verified; leaderboard submission dated 2026-07-24."
+  },
+  {
+   "id": "claude-opus-4-7",
+   "name": "Claude Opus 4.7",
+   "vendor": "Anthropic",
+   "released": "2026-04",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 87.6,
+    "swe_pro": 64.3,
+    "terminal_bench": 69.4
+   },
+   "sources": {
+    "swe_verified": "https://www.anthropic.com/news/claude-opus-4-7",
+    "swe_pro": "https://www.anthropic.com/news/claude-opus-4-7",
+    "terminal_bench": "https://www.anthropic.com/news/claude-opus-4-7"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor"
+   },
+   "notes": "All vendor-reported (values from Anthropic's launch chart, as transcribed by press). TB 2.0 with Terminus-2 harness, thinking disabled, 5 attempts. Not on official SWE-bench/Scale/TB2 leaderboards except third-party scaffolds (WOZCODE 80.2 on TB2, unverified)."
+  },
+  {
+   "id": "claude-opus-4-6",
+   "name": "Claude Opus 4.6",
+   "vendor": "Anthropic",
+   "released": "2026-02",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 75.6,
+    "swe_pro": 51.9,
+    "terminal_bench": 62.9
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-bench Verified: official bash-only leaderboard (mini-SWE-agent v2.0.0). SWE-bench Pro: Scale, mini-swe-agent harness, thinking. TB2: official Terminus 2 (Claude Code 58.0). Vendor-reported: SWE-V 80.8, TB2 65.4 (Terminus-2), per Google's comparison table."
+  },
+  {
+   "id": "claude-sonnet-4-6",
+   "name": "Claude Sonnet 4.6",
+   "vendor": "Anthropic",
+   "released": "2026-02",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 79.6,
+    "terminal_bench": 59.1
+   },
+   "sources": {
+    "swe_verified": "https://deepmind.google/models/gemini/pro/",
+    "terminal_bench": "https://deepmind.google/models/gemini/pro/"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "terminal_bench": "vendor"
+   },
+   "notes": "Vendor-reported by Anthropic (thinking max), as listed in Google's Gemini 3.1 Pro comparison table; Anthropic's own page also cites 80.2 with a prompt modification. TB2 Terminus-2, thinking off. Not on official leaderboards except an unverified third-party TB2 entry (53.4)."
+  },
+  {
+   "id": "claude-opus-4-5",
+   "name": "Claude Opus 4.5",
+   "vendor": "Anthropic",
+   "released": "2025-11",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 76.8,
+    "swe_pro": 45.89,
+    "terminal_bench": 57.8
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "Official: SWE-V bash-only (mini-SWE-agent v2, high effort; 74.4 on v1.16 medium); Scale Pro public; TB2 Terminus 2 (Claude Code 52.1). Vendor-reported: SWE-V 80.9, TB2 59.3."
+  },
+  {
+   "id": "claude-sonnet-4-5",
+   "name": "Claude Sonnet 4.5",
+   "vendor": "Anthropic",
+   "released": "2025-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 71.4,
+    "swe_pro": 43.6,
+    "terminal_bench": 42.8
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "Official: SWE-V bash-only (mini-SWE-agent v2, high; 70.6 on v1.13.3); Scale Pro public (SWE-Agent); TB2 Terminus 2 (Claude Code 40.1). Vendor-reported SWE-V is higher (77.2)."
+  },
+  {
+   "id": "claude-haiku-4-5",
+   "name": "Claude Haiku 4.5",
+   "vendor": "Anthropic",
+   "released": "2025-10",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 66.6,
+    "swe_pro": 39.45,
+    "terminal_bench": 28.3
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "Official: SWE-V bash-only (mini-SWE-agent v2, high); Scale Pro public; TB2 Terminus 2 (Mini-SWE-Agent 29.8, Claude Code 27.5)."
+  },
+  {
+   "id": "claude-sonnet-4",
+   "name": "Claude Sonnet 4",
+   "vendor": "Anthropic",
+   "released": "2025-05",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 64.9,
+    "swe_pro": 42.7,
+    "aider_polyglot": 61.3,
+    "livecodebench": 55.9
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://livecodebench.github.io/leaderboard.html"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "aider_polyglot": "official",
+    "livecodebench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v1.0). Aider: 32k thinking, diff (no thinking 56.4). LCB: thinking, official v6 window 2024-08..2025-05 (no thinking 47.1)."
+  },
+  {
+   "id": "claude-3-5-sonnet",
+   "name": "Claude 3.5 Sonnet (2024-10-22)",
+   "vendor": "Anthropic",
+   "released": "2024-10",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "aider_polyglot": 51.6,
+    "livecodebench": 36.4
+   },
+   "sources": {
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://livecodebench.github.io/leaderboard.html"
+   },
+   "provenance": {
+    "aider_polyglot": "official",
+    "livecodebench": "official"
+   },
+   "notes": "Older reference point. LCB official window 2024-08..2025-05."
+  },
+  {
+   "id": "gpt-6-astra",
+   "name": "GPT-6 Astra",
+   "vendor": "OpenAI",
+   "released": "2026-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 58.18
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard: Codex agent, max effort (high and xhigh both 57.88). OpenAI-reported 57.9 at high effort (cited by Anthropic). No SWE-bench numbers found."
+  },
+  {
+   "id": "gpt-6-sol",
+   "name": "GPT-6 Sol",
+   "vendor": "OpenAI",
+   "released": "2026-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 49.39
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard: Codex agent, max effort. GPT-6.1 Sol (leaderboard entry 2026-09-29) scores 58.18 under the same setup."
+  },
+  {
+   "id": "gpt-6-luna",
+   "name": "GPT-6 Luna",
+   "vendor": "OpenAI",
+   "released": "2026-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 16.36
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard: Codex agent, max effort. Small/cheap tier."
+  },
+  {
+   "id": "gpt-5-5",
+   "name": "GPT-5.5",
+   "vendor": "OpenAI",
+   "released": "2026-04",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench": 82.2
+   },
+   "sources": {
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "terminal_bench": "official"
+   },
+   "notes": "TB2 official: Codex CLI (verified). OpenAI reports 82.7 on TB2 and 58.6 on SWE-bench Pro (vendor harness, https://openai.com/index/introducing-gpt-5-5/). OpenAI no longer reports SWE-bench Verified."
+  },
+  {
+   "id": "gpt-5-4",
+   "name": "GPT-5.4",
+   "vendor": "OpenAI",
+   "released": "2026-03",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_pro": 59.1,
+    "terminal_bench": 75.1
+   },
+   "sources": {
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+   },
+   "provenance": {
+    "swe_pro": "official",
+    "terminal_bench": "vendor"
+   },
+   "notes": "SWE-bench Pro: Scale public set, xHigh, mini-swe-agent harness. TB2 75.1 is OpenAI-reported (Codex harness), as cited in DeepSeek's V4 comparison table; not on official TB2 board. OpenAI-reported SWE-Pro is 57.7."
+  },
+  {
+   "id": "gpt-5-3-codex",
+   "name": "GPT-5.3-Codex",
+   "vendor": "OpenAI",
+   "released": "2026-02",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_pro": 56.8,
+    "terminal_bench": 64.7
+   },
+   "sources": {
+    "swe_pro": "https://deepmind.google/models/gemini/pro/",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "terminal_bench": "official"
+   },
+   "notes": "TB2 official Terminus 2 (xhigh); with OpenAI's own Codex harness OpenAI reports 77.3, official board shows Simple Codex 75.1 (verified). SWE-Pro 56.8 is OpenAI-reported (listed in Google's table)."
+  },
+  {
+   "id": "gpt-5-2",
+   "name": "GPT-5.2",
+   "vendor": "OpenAI",
+   "released": "2025-12",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 72.8,
+    "swe_pro": 29.94,
+    "terminal_bench": 54.0
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v2, high). Scale Pro 29.94 may be a capped (50-turn) run; OpenAI-reported 55.6 (xhigh), and gpt-5.2-codex scores 41.04 on Scale. TB2 Terminus 2 (Codex CLI 62.9). Vendor SWE-V 80.0 (xhigh)."
+  },
+  {
+   "id": "gpt-5",
+   "name": "GPT-5",
+   "vendor": "OpenAI",
+   "released": "2025-08",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 65.0,
+    "swe_pro": 41.78,
+    "terminal_bench": 35.2,
+    "aider_polyglot": 88.0
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official",
+    "aider_polyglot": "official"
+   },
+   "notes": "SWE-V bash-only (medium). Scale Pro: high. TB2 Terminus 2 (Codex CLI 49.6). Aider: high reasoning, diff (medium 86.7)."
+  },
+  {
+   "id": "gpt-4o",
+   "name": "GPT-4o",
+   "vendor": "OpenAI",
+   "released": "2024-05",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 21.6,
+    "aider_polyglot": 23.1,
+    "livecodebench": 29.5
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://livecodebench.github.io/leaderboard.html"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "aider_polyglot": "official",
+    "livecodebench": "official"
+   },
+   "notes": "Older reference point. Snapshots differ: SWE-V bash-only uses gpt-4o-2024-11-20; Aider and LCB use gpt-4o-2024-08-06 (Aider 2024-11-20 = 18.2)."
+  },
+  {
+   "id": "gpt-oss-120b",
+   "name": "gpt-oss-120b",
+   "vendor": "OpenAI",
+   "released": "2025-08",
+   "open_weights": true,
+   "params": "117B-A5.1B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 26.0,
+    "swe_pro": 16.2,
+    "terminal_bench": 18.7,
+    "aider_polyglot": 41.8
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official",
+    "aider_polyglot": "official"
+   },
+   "notes": "MoE with small active params but ~65GB at MXFP4; classed large. Official SWE-V bash-only is far below OpenAI's own 62.4 (high reasoning, OpenAI harness). Aider: high reasoning. Qwen's tables report LCB v6 82.7 (third-party)."
+  },
+  {
+   "id": "gpt-oss-20b",
+   "name": "gpt-oss-20b",
+   "vendor": "OpenAI",
+   "released": "2025-08",
+   "open_weights": true,
+   "params": "21B-A3.6B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 60.7,
+    "terminal_bench": 3.1
+   },
+   "sources": {
+    "swe_verified": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-20b",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "terminal_bench": "official"
+   },
+   "notes": "Runs in 16GB. SWE-V 60.7 is OpenAI-reported at high reasoning (OpenAI harness, 477-task subset); third-party reproductions are much lower (GLM/NVIDIA cards list 34.0 with OpenHands). TB2 official Terminus 2. LCB v6 third-party values conflict (Qwen 74.6, NVIDIA/Z.ai 61.0) so omitted."
+  },
+  {
+   "id": "gemini-3-1-pro",
+   "name": "Gemini 3.1 Pro",
+   "vendor": "Google",
+   "released": "2026-02",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 80.6,
+    "swe_pro": 46.1,
+    "terminal_bench": 68.5
+   },
+   "sources": {
+    "swe_verified": "https://deepmind.google/models/gemini/pro/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://deepmind.google/models/gemini/pro/"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "official",
+    "terminal_bench": "vendor"
+   },
+   "notes": "SWE-Pro official Scale (thinking, mini-swe-agent harness); Google reports 54.2. SWE-V and TB2 (Terminus-2) are Google-reported, thinking high; official TB2 board has only third-party scaffolds (Gemini CLI 61.4, unverified)."
+  },
+  {
+   "id": "gemini-3-pro",
+   "name": "Gemini 3 Pro",
+   "vendor": "Google",
+   "released": "2025-11",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 74.2,
+    "swe_pro": 43.3,
+    "terminal_bench": 56.9
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only with Gemini 3 Pro Preview (mini-SWE-agent v1.15; GA model on v2 high = 69.6). TB2 Terminus 2. Google-reported SWE-V 76.2."
+  },
+  {
+   "id": "gemini-3-flash",
+   "name": "Gemini 3 Flash",
+   "vendor": "Google",
+   "released": "2025-12",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 75.8,
+    "swe_pro": 34.63,
+    "terminal_bench": 51.7
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v2, high). TB2 Terminus 2."
+  },
+  {
+   "id": "gemini-3-8-flash",
+   "name": "Gemini 3.8 Flash",
+   "vendor": "Google",
+   "released": null,
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 19.09
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard, mini-SWE-agent harness, high (Gemini 3.7 Flash: 11.21). Release month not verified; leaderboard entry 2026-09-02."
+  },
+  {
+   "id": "gemini-2-5-pro",
+   "name": "Gemini 2.5 Pro",
+   "vendor": "Google",
+   "released": "2025-06",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 53.6,
+    "terminal_bench": 32.6,
+    "aider_polyglot": 83.1,
+    "livecodebench": 73.6
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://livecodebench.github.io/leaderboard.html"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "terminal_bench": "official",
+    "aider_polyglot": "official",
+    "livecodebench": "official"
+   },
+   "notes": "SWE-V bash-only. TB2 Terminus 2. Aider: preview-06-05, 32k thinking. LCB: 06-05, official window 2024-08..2025-05."
+  },
+  {
+   "id": "gemini-2-5-flash",
+   "name": "Gemini 2.5 Flash",
+   "vendor": "Google",
+   "released": "2025-06",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_verified": 28.7,
+    "terminal_bench": 16.9,
+    "aider_polyglot": 55.1,
+    "livecodebench": 61.9
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://livecodebench.github.io/leaderboard.html"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "terminal_bench": "official",
+    "aider_polyglot": "official",
+    "livecodebench": "official"
+   },
+   "notes": "Aider and LCB use preview-05-20 (Aider with 24k thinking). TB2 Terminus 2."
+  },
+  {
+   "id": "gemma-4-31b",
+   "name": "Gemma 4 31B",
+   "vendor": "Google",
+   "released": "2026-03",
+   "open_weights": true,
+   "params": "31B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 52.0,
+    "swe_pro": 35.7,
+    "terminal_bench": 42.9,
+    "livecodebench": 80.0
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
+   },
+   "provenance": {
+    "swe_verified": "third-party",
+    "swe_pro": "third-party",
+    "terminal_bench": "third-party",
+    "livecodebench": "vendor"
+   },
+   "notes": "LCB v6 is Google-reported. SWE-V/Pro/TB2 come from Qwen's comparison table (Qwen internal scaffold; TB2 Terminus-2), not Google. Released 2026-03-31 per Google's release log (some reports say Apr 2)."
+  },
+  {
+   "id": "gemma-4-26b-a4b",
+   "name": "Gemma 4 26B-A4B",
+   "vendor": "Google",
+   "released": "2026-03",
+   "open_weights": true,
+   "params": "25.2B-A3.8B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 17.4,
+    "swe_pro": 13.8,
+    "terminal_bench": 34.2,
+    "livecodebench": 77.1
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
+   },
+   "provenance": {
+    "swe_verified": "third-party",
+    "swe_pro": "third-party",
+    "terminal_bench": "third-party",
+    "livecodebench": "vendor"
+   },
+   "notes": "LCB v6 Google-reported. SWE/TB2 values are from Qwen's comparison table (third-party)."
+  },
+  {
+   "id": "gemma-4-12b",
+   "name": "Gemma 4 12B",
+   "vendor": "Google",
+   "released": "2026-06",
+   "open_weights": true,
+   "params": "12B",
+   "local_class": "small",
+   "scores": {
+    "livecodebench": 72.0
+   },
+   "sources": {
+    "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
+   },
+   "provenance": {
+    "livecodebench": "vendor"
+   },
+   "notes": "Gemma 4 12B Unified (11.95B dense). LCB v6 Google-reported. No agentic coding scores found."
+  },
+  {
+   "id": "gemma-4-e4b",
+   "name": "Gemma 4 E4B",
+   "vendor": "Google",
+   "released": "2026-03",
+   "open_weights": true,
+   "params": "8B (4.5B effective)",
+   "local_class": "small",
+   "scores": {
+    "livecodebench": 52.0
+   },
+   "sources": {
+    "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
+   },
+   "provenance": {
+    "livecodebench": "vendor"
+   },
+   "notes": "LCB v6 Google-reported (E2B: 44.0)."
+  },
+  {
+   "id": "gemma-3-27b",
+   "name": "Gemma 3 27B",
+   "vendor": "Google",
+   "released": "2025-03",
+   "open_weights": true,
+   "params": "27B",
+   "local_class": "medium",
+   "scores": {
+    "swe_pro": 11.38,
+    "aider_polyglot": 4.9,
+    "livecodebench": 29.1
+   },
+   "sources": {
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
+   },
+   "provenance": {
+    "swe_pro": "official",
+    "aider_polyglot": "official",
+    "livecodebench": "vendor"
+   },
+   "notes": "Aider: whole edit format. LCB v6 as listed in the Gemma 4 model card (no thinking)."
+  },
+  {
+   "id": "grok-4-7",
+   "name": "Grok 4.7",
+   "vendor": "xAI",
+   "released": "2026-09",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench_4": 37.58
+   },
+   "sources": {
+    "terminal_bench_4": "https://www.tbench.ai/"
+   },
+   "provenance": {
+    "terminal_bench_4": "official"
+   },
+   "notes": "TB 4.0 official leaderboard, Grok Build agent, xhigh. Release date from secondary reports (2026-09-21)."
+  },
+  {
+   "id": "grok-4",
+   "name": "Grok 4",
+   "vendor": "xAI",
+   "released": "2025-07",
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "terminal_bench": 23.1,
+    "aider_polyglot": 79.6
+   },
+   "sources": {
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/"
+   },
+   "provenance": {
+    "terminal_bench": "official",
+    "aider_polyglot": "official"
+   },
+   "notes": "TB2 Terminus 2 (OpenHands 27.2). Aider: high reasoning."
+  },
+  {
+   "id": "deepseek-v4-pro",
+   "name": "DeepSeek V4 Pro",
+   "vendor": "DeepSeek",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "1.6T-A49B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 80.6,
+    "swe_pro": 55.4,
+    "terminal_bench": 67.9,
+    "livecodebench": 93.5
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "swe_pro": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "terminal_bench": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "livecodebench": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "All vendor-reported, Think Max mode (High: 79.4/54.4/63.3/89.8). Harness not described on the card; LCB version not stated."
+  },
+  {
+   "id": "deepseek-v4-flash",
+   "name": "DeepSeek V4 Flash",
+   "vendor": "DeepSeek",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "284B-A13B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 79.0,
+    "swe_pro": 52.6,
+    "terminal_bench": 56.9,
+    "livecodebench": 91.6
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "swe_pro": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "terminal_bench": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "livecodebench": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "All vendor-reported, Think Max mode (Non-think: 73.7/49.1/49.1/55.2). Harness not described; LCB version not stated."
+  },
+  {
+   "id": "deepseek-v3-2",
+   "name": "DeepSeek V3.2",
+   "vendor": "DeepSeek",
+   "released": "2025-12",
+   "open_weights": true,
+   "params": "685B-A37B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 70.0,
+    "swe_pro": 15.56,
+    "terminal_bench": 39.6
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v2, high). Scale Pro may be a capped run. TB2 Terminus 2 entry is on the official board but not verified. Vendor: SWE-V 73.1, TB2 46.4 (Claude Code). Aider 74.2 is for V3.2-Exp (Reasoner), a different checkpoint."
+  },
+  {
+   "id": "deepseek-r1-0528",
+   "name": "DeepSeek R1 (0528)",
+   "vendor": "DeepSeek",
+   "released": "2025-05",
+   "open_weights": true,
+   "params": "671B-A37B",
+   "local_class": "large",
+   "scores": {
+    "aider_polyglot": 71.4,
+    "livecodebench": 73.1
+   },
+   "sources": {
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/",
+    "livecodebench": "https://livecodebench.github.io/leaderboard.html"
+   },
+   "provenance": {
+    "aider_polyglot": "official",
+    "livecodebench": "official"
+   },
+   "notes": "LCB official window 2024-08..2025-05. Original R1 (Jan 2025) scored 56.9 on Aider."
+  },
+  {
+   "id": "kimi-k2-5",
+   "name": "Kimi K2.5",
+   "vendor": "Moonshot AI",
+   "released": "2026-01",
+   "open_weights": true,
+   "params": "1T-A32B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 70.8,
+    "swe_pro": 50.7,
+    "terminal_bench": 43.2,
+    "livecodebench": 85.0
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://huggingface.co/moonshotai/Kimi-K2.5",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "livecodebench": "https://huggingface.co/moonshotai/Kimi-K2.5"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "vendor",
+    "terminal_bench": "official",
+    "livecodebench": "vendor"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v2, high); vendor 76.8 with internal minimal-tool scaffold. TB2 official Terminus 2 (vendor 50.8, non-thinking). SWE-Pro and LCB v6 vendor-reported."
+  },
+  {
+   "id": "kimi-k2-instruct",
+   "name": "Kimi K2 Instruct",
+   "vendor": "Moonshot AI",
+   "released": "2025-07",
+   "open_weights": true,
+   "params": "1T-A32B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 43.8,
+    "swe_pro": 27.67,
+    "terminal_bench": 27.8,
+    "aider_polyglot": 59.1
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official",
+    "aider_polyglot": "official"
+   },
+   "notes": "SWE-V bash-only. TB2 Terminus 2. Kimi K2 Thinking: SWE-V bash-only 63.4, TB2 35.7."
+  },
+  {
+   "id": "glm-5",
+   "name": "GLM-5",
+   "vendor": "Zhipu AI (Z.ai)",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "744B-A40B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 72.8,
+    "terminal_bench": 52.4
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v2, high); vendor 77.8 (OpenHands). TB2 Terminus 2 entry on official board, not verified; vendor 56.2."
+  },
+  {
+   "id": "glm-4-7",
+   "name": "GLM-4.7",
+   "vendor": "Zhipu AI (Z.ai)",
+   "released": "2025-12",
+   "open_weights": true,
+   "params": "355B-A32B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 73.8,
+    "terminal_bench": 33.4
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/zai-org/GLM-5",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V vendor-reported (OpenHands, as listed in GLM-5 card). TB2 official Terminus 2 (vendor 41.0)."
+  },
+  {
+   "id": "glm-4-7-flash",
+   "name": "GLM-4.7-Flash",
+   "vendor": "Zhipu AI (Z.ai)",
+   "released": "2026-01",
+   "open_weights": true,
+   "params": "30B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 59.2,
+    "livecodebench": 64.0
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+    "livecodebench": "https://huggingface.co/zai-org/GLM-4.7-Flash"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Consumer-GPU MoE. Vendor-reported; LCB v6. Same card lists gpt-oss-20b at 34.0 SWE-V and Qwen3-30B-A3B-Thinking-2507 at 22.0."
+  },
+  {
+   "id": "glm-4-6",
+   "name": "GLM-4.6",
+   "vendor": "Zhipu AI (Z.ai)",
+   "released": "2025-09",
+   "open_weights": true,
+   "params": "355B-A32B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 55.4,
+    "swe_pro": 9.67,
+    "terminal_bench": 24.5
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only. Scale Pro may be a capped run. TB2 Terminus 2. GLM-4.5: SWE-V bash-only 54.2."
+  },
+  {
+   "id": "minimax-m2-5",
+   "name": "MiniMax M2.5",
+   "vendor": "MiniMax",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "229B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 75.8,
+    "swe_pro": 55.4,
+    "terminal_bench": 42.2
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "vendor",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v2, high); vendor 80.2. SWE-Pro vendor (model-card eval metadata). TB2 Terminus 2 entry, not verified."
+  },
+  {
+   "id": "minimax-m2",
+   "name": "MiniMax M2",
+   "vendor": "MiniMax",
+   "released": "2025-10",
+   "open_weights": true,
+   "params": "230B-A10B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 61.0,
+    "terminal_bench": 30.0
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only. TB2 Terminus 2. M2.1: Scale Pro 36.81, TB2 Terminus 2 29.2."
+  },
+  {
+   "id": "qwen3-6-27b",
+   "name": "Qwen3.6 27B",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "27B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 77.2,
+    "swe_pro": 53.5,
+    "terminal_bench": 59.3,
+    "livecodebench": 83.9
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-27B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-27B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-27B",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.6-27B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Dense, fits a 24GB GPU at 4-bit. Vendor-reported: SWE series on Qwen internal bash+edit scaffold (Pro on Qwen-refined task set), TB2 Harbor/Terminus-2 avg of 5 runs, LCB v6.",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-6-35b-a3b",
+   "name": "Qwen3.6 35B-A3B",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "35B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 73.4,
+    "swe_pro": 49.5,
+    "terminal_bench": 51.5,
+    "livecodebench": 80.4
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported (internal scaffold; TB2 Terminus-2, 5 runs; LCB v6). Official TB2 board has only an unverified third-party scaffold run (little-coder, 24.6).",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-5-27b",
+   "name": "Qwen3.5 27B",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "27B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 75.0,
+    "swe_pro": 51.2,
+    "terminal_bench": 41.6,
+    "livecodebench": 80.7
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported, as re-evaluated in the Qwen3.6 model card (same harness notes as Qwen3.6).",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-5-35b-a3b",
+   "name": "Qwen3.5 35B-A3B",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "35B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 70.0,
+    "swe_pro": 44.6,
+    "terminal_bench": 40.5,
+    "livecodebench": 74.6
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported, as listed in the Qwen3.6-35B-A3B card.",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-5-9b",
+   "name": "Qwen3.5 9B",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "9B",
+   "local_class": "small",
+   "scores": {
+    "terminal_bench": 9.2,
+    "livecodebench": 65.6,
+    "swe_verified": 53.2,
+    "swe_pro": 31.3
+   },
+   "sources": {
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.5-9B",
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.5-9B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.5-9B"
+   },
+   "provenance": {
+    "terminal_bench": "official",
+    "livecodebench": "vendor",
+    "swe_verified": "vendor",
+    "swe_pro": "vendor"
+   },
+   "notes": "LCB v6 vendor-reported (Qwen3.5-4B: 55.8). TB2 is an unverified official-board entry using the third-party little-coder scaffold.",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-5-397b-a17b",
+   "name": "Qwen3.5 397B-A17B",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "397B-A17B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 76.2,
+    "swe_pro": 50.9,
+    "terminal_bench": 52.5,
+    "livecodebench": 83.6
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3.6-27B",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.6-27B",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3.6-27B",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.6-27B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported, as listed in the Qwen3.6-27B card.",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-coder-next",
+   "name": "Qwen3-Coder-Next",
+   "vendor": "Alibaba Qwen",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "80B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 70.6,
+    "swe_pro": 44.3,
+    "terminal_bench": 36.2
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+    "terminal_bench": "https://huggingface.co/Qwen/Qwen3-Coder-Next"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor"
+   },
+   "notes": "80B total but only 3B active; needs ~48GB+ at 4-bit (borderline consumer). Vendor-reported; harness not stated on the card.",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-coder-480b-a35b",
+   "name": "Qwen3-Coder 480B-A35B",
+   "vendor": "Alibaba Qwen",
+   "released": "2025-07",
+   "open_weights": true,
+   "params": "480B-A35B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 55.4,
+    "swe_pro": 38.7,
+    "terminal_bench": 23.9
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "terminal_bench": "https://www.tbench.ai/leaderboard/terminal-bench/2.0"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "terminal_bench": "official"
+   },
+   "notes": "SWE-V bash-only (mini-SWE-agent v1.0); with OpenHands the official full leaderboard shows 69.6. TB2 Terminus 2 (OpenHands 25.4)."
+  },
+  {
+   "id": "qwen3-coder-30b-a3b",
+   "name": "Qwen3-Coder 30B-A3B",
+   "vendor": "Alibaba Qwen",
+   "released": "2025-07",
+   "open_weights": true,
+   "params": "30B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 51.6
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/"
+   },
+   "provenance": {
+    "swe_verified": "official"
+   },
+   "notes": "Official swebench.com full (non bash-only) leaderboard, OpenHands scaffold (2025-08-05 submission). Not comparable to bash-only numbers. Vendor tables publish no text numbers."
+  },
+  {
+   "id": "qwen2-5-coder-32b",
+   "name": "Qwen2.5-Coder 32B Instruct",
+   "vendor": "Alibaba Qwen",
+   "released": "2024-11",
+   "open_weights": true,
+   "params": "32B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 9.0,
+    "aider_polyglot": 16.4
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "aider_polyglot": "official"
+   },
+   "notes": "Older local reference. SWE-V bash-only. Aider: whole format (diff: 8.0)."
+  },
+  {
+   "id": "devstral-small-2",
+   "name": "Devstral Small 2 (2512)",
+   "vendor": "Mistral AI",
+   "released": "2025-12",
+   "open_weights": true,
+   "params": "24B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 56.4,
+    "terminal_bench": 22.5
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "terminal_bench": "https://huggingface.co/mistralai/Devstral-Small-2-24B-Instruct-2512"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "terminal_bench": "vendor"
+   },
+   "notes": "Fits a 24GB GPU at 4-bit. SWE-V official bash-only (mini-SWE-agent v1.17.2); Mistral reports 68.0. TB2 vendor-reported. Earlier Devstral Small 2505 (OpenHands): 46.8 on the full leaderboard."
+  },
+  {
+   "id": "devstral-2",
+   "name": "Devstral 2 (2512)",
+   "vendor": "Mistral AI",
+   "released": "2025-12",
+   "open_weights": true,
+   "params": "123B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 53.8,
+    "terminal_bench": 32.6
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "terminal_bench": "https://huggingface.co/mistralai/Devstral-Small-2-24B-Instruct-2512"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "terminal_bench": "vendor"
+   },
+   "notes": "SWE-V official bash-only; Mistral reports 72.2. TB2 vendor-reported."
+  },
+  {
+   "id": "muse-spark-1-1",
+   "name": "Muse Spark 1.1",
+   "vendor": "Meta",
+   "released": null,
+   "open_weights": false,
+   "params": null,
+   "local_class": "cloud",
+   "scores": {
+    "swe_pro": 61.5
+   },
+   "sources": {
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+   },
+   "provenance": {
+    "swe_pro": "official"
+   },
+   "notes": "Top of Scale SWE-bench Pro public set (mini-swe-agent harness); commercial subset 51.5. Release month not verified (leaderboard entry 2026-07)."
+  },
+  {
+   "id": "llama-4-maverick",
+   "name": "Llama 4 Maverick",
+   "vendor": "Meta",
+   "released": "2025-04",
+   "open_weights": true,
+   "params": "400B-A17B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 21.0,
+    "swe_pro": 5.24,
+    "aider_polyglot": 15.6
+   },
+   "sources": {
+    "swe_verified": "https://www.swebench.com/",
+    "swe_pro": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "aider_polyglot": "https://aider.chat/docs/leaderboards/"
+   },
+   "provenance": {
+    "swe_verified": "official",
+    "swe_pro": "official",
+    "aider_polyglot": "official"
+   },
+   "notes": "SWE-V bash-only (Llama 4 Scout 109B-A17B: 9.1). Aider: whole format."
+  },
+  {
+   "id": "phi-4-reasoning",
+   "name": "Phi-4-reasoning",
+   "vendor": "Microsoft",
+   "released": "2025-04",
+   "open_weights": true,
+   "params": "14B",
+   "local_class": "medium",
+   "scores": {
+    "livecodebench": 53.8
+   },
+   "sources": {
+    "livecodebench": "https://ai.azure.com/catalog/models/Phi-4-reasoning"
+   },
+   "provenance": {
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported LCB, window 2024-08..2025-01 (older window than v6)."
+  },
+  {
+   "id": "seed-oss-36b",
+   "name": "Seed-OSS 36B Instruct",
+   "vendor": "ByteDance Seed",
+   "released": "2025-08",
+   "open_weights": true,
+   "params": "36B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 56.0,
+    "livecodebench": 67.4
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+    "livecodebench": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported. SWE-V with OpenHands (AgentLess 4x10: 47). LCB v6 window 2025-02..2025-05."
+  },
+  {
+   "id": "nemotron-3-nano-30b-a3b",
+   "name": "Nemotron 3 Nano 30B-A3B",
+   "vendor": "NVIDIA",
+   "released": "2025-12",
+   "open_weights": true,
+   "params": "30B-A3.5B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 38.8,
+    "livecodebench": 68.3
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+    "livecodebench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-reported. Card labels the SWE score 'SWE-Bench (OpenHands)'. LCB v6 (card's window label reads 2025-08 to 2025-05). Also reports Terminal Bench hard subset 8.5 (not TB2 full)."
+  },
+  {
+   "id": "qwen3-8-27b",
+   "name": "Qwen3.8 27B",
+   "vendor": "Alibaba",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "27B",
+   "local_class": "medium",
+   "scores": {
+    "swe_pro": 61.7,
+    "terminal_bench_2_1": 73.0,
+    "livecodebench": 90.3
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "terminal_bench_2_1": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.8-27B"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Dense vision-language model, Apache 2.0, 262k context. Vendor model card: SWE-bench Pro 61.7, Terminal-Bench 2.1 73.0 (Terminus harness), LiveCodeBench v6 90.3. No SWE-bench Verified or Aider numbers; no official leaderboard entries yet. A 4-bit quant is about 17-18 GB.",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-8-flash-next",
+   "name": "Qwen3.8 Flash-Next",
+   "vendor": "Alibaba",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "125B-A6B",
+   "local_class": "large",
+   "scores": {
+    "swe_pro": 62.5,
+    "livecodebench": 91.9
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "MoE, qwen-community-1.0 license. Vendor model card: SWE-bench Pro 62.5, LiveCodeBench v6 91.9 (also SWE-bench Multilingual 81.0).",
+   "hybrid": true
+  },
+  {
+   "id": "qwen3-8-max",
+   "name": "Qwen3.8 Max",
+   "vendor": "Alibaba",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "2.4T-A95B",
+   "local_class": "large",
+   "scores": {
+    "swe_pro": 67.7,
+    "terminal_bench_2_1": 86.6,
+    "terminal_bench_4": 27.0
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+    "terminal_bench_2_1": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+    "terminal_bench_4": "https://www.tbench.ai/leaderboard/terminal-bench/4.0"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor",
+    "terminal_bench_4": "official"
+   },
+   "notes": "Closed API model built on the open Qwen3.8-2.4T-A95B weights. TB 4.0: official tbench.ai entry Qwen3.8-Max-0902 with the Claude Code agent, 27.0 +/- 3.8 (2026-09-02). Other numbers from the model card.",
+   "hybrid": true
+  },
+  {
+   "id": "ornith-1-5-9b",
+   "name": "Ornith 1.5 9B",
+   "vendor": "Ornith AI",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "9B",
+   "local_class": "small",
+   "hybrid": true,
+   "scores": {
+    "swe_verified": 70.6,
+    "swe_pro": 47.5,
+    "terminal_bench_2_1": 46.2
+   },
+   "sources": {
+    "swe_verified": "https://ornith.ai/ornith_1_5.html",
+    "swe_pro": "https://ornith.ai/ornith_1_5.html",
+    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor numbers (Terminal-Bench 2.1 with Terminus 2; SWE-bench Multilingual 54.4). Built on Qwen3.5 and Gemma 4 bases via Ornith 1.0. An independent RTX 5090 test did not confirm the agentic coding margins."
+  },
+  {
+   "id": "ornith-1-5-35b-a3b",
+   "name": "Ornith 1.5 35B-A3B",
+   "vendor": "Ornith AI",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "35B-A3B",
+   "local_class": "medium",
+   "hybrid": true,
+   "scores": {
+    "swe_verified": 79.0,
+    "swe_pro": 59.6,
+    "terminal_bench_2_1": 67.8
+   },
+   "sources": {
+    "swe_verified": "https://ornith.ai/ornith_1_5.html",
+    "swe_pro": "https://ornith.ai/ornith_1_5.html",
+    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor numbers (Terminal-Bench 2.1 with Terminus 2; SWE-bench Multilingual 71.4). MoE with about 3B active parameters."
+  },
+  {
+   "id": "ornith-1-5-397b",
+   "name": "Ornith 1.5 397B",
+   "vendor": "Ornith AI",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "397B-A17B",
+   "local_class": "large",
+   "hybrid": true,
+   "scores": {
+    "swe_verified": 86.0,
+    "swe_pro": 65.1,
+    "terminal_bench_2_1": 86.1
+   },
+   "sources": {
+    "swe_verified": "https://ornith.ai/ornith_1_5.html",
+    "swe_pro": "https://ornith.ai/ornith_1_5.html",
+    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor numbers. MoE; the active parameter count is not published, 17B assumed from the Qwen3.5-397B-A17B base."
+  },
+  {
+   "id": "recursive-flint",
+   "name": "Recursive Flint",
+   "vendor": "Recursive",
+   "released": "2026-10",
+   "open_weights": true,
+   "params": "39.8B-A2.5B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 74.2,
+    "terminal_bench_2_1": 54.9
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/RecursiveSI/flint",
+    "terminal_bench_2_1": "https://huggingface.co/RecursiveSI/flint"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor-only: Terminal-Bench 2.1 with Terminus 2, SWE-bench Verified with mini-swe-agent, mean pass@1 over at least 5 attempts. The card's 89.7 on 'SWE-bench Pro v2' is a different version from the public SWE-bench Pro set and is left out. MoE with about 2.5B active parameters, so it is fast on modest hardware; 262k context."
+  },
+  {
+   "id": "ternary-bonsai-2-27b",
+   "name": "Ternary Bonsai 2 27B",
+   "vendor": "PrismML",
+   "released": "2026-09",
+   "open_weights": true,
+   "params": "27B",
+   "local_class": "small",
+   "scores": {
+    "livecodebench": 90.07
+   },
+   "sources": {
+    "livecodebench": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf"
+   },
+   "provenance": {
+    "livecodebench": "vendor"
+   },
+   "notes": "Ternary (about 1.72 bits per weight, about 6 GB GGUF) build of Qwen3.8 27B, so it fits an 8 GB card. Vendor-only LiveCodeBench in thinking mode (FP16 Qwen3.8 27B: 90.05 on the same setup); no SWE-bench or Terminal-Bench numbers published.",
+   "hybrid": true,
+   "quants": [
+    [
+     "TQ1 (ternary)",
+     1.72,
+     0.97
+    ]
+   ]
+  },
+  {
+   "id": "laguna-xs-2-1",
+   "name": "Laguna XS 2.1",
+   "vendor": "Poolside",
+   "released": "2026-07",
+   "open_weights": true,
+   "params": "33B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 70.9,
+    "swe_pro": 47.6,
+    "swe_multilingual": 63.1,
+    "terminal_bench": 37.5
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/poolside/Laguna-XS-2.1",
+    "swe_pro": "https://huggingface.co/poolside/Laguna-XS-2.1",
+    "swe_multilingual": "https://huggingface.co/poolside/Laguna-XS-2.1",
+    "terminal_bench": "https://huggingface.co/poolside/Laguna-XS-2.1"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench": "vendor"
+   },
+   "notes": "Vendor-only, Poolside's own harness, mean pass@1 over 2-5 attempts, thinking on; SWE-bench Pro is the public set. Vals.ai measured the earlier Laguna XS.2 at 25.8 on Terminal-Bench 2.1."
+  },
+  {
+   "id": "laguna-s-2-1",
+   "name": "Laguna S 2.1",
+   "vendor": "Poolside",
+   "released": "2026-07",
+   "open_weights": true,
+   "params": "118B-A8B",
+   "local_class": "large",
+   "scores": {
+    "swe_pro": 59.4,
+    "swe_multilingual": 78.5,
+    "terminal_bench_2_1": 70.2
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/poolside/Laguna-S-2.1",
+    "swe_multilingual": "https://huggingface.co/poolside/Laguna-S-2.1",
+    "terminal_bench_2_1": "https://huggingface.co/poolside/Laguna-S-2.1"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor-only (2026-07-21); SWE-bench Pro is the public set. Runs on one DGX Spark according to Poolside."
+  },
+  {
+   "id": "muse-glimmer-30b",
+   "name": "Muse Glimmer 30B",
+   "vendor": "Meta",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "30B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 76.0,
+    "swe_pro": 51.2,
+    "terminal_bench_2_1": 51.7
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+    "swe_pro": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+    "terminal_bench_2_1": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Dense multimodal model distilled from Muse Spark. Vendor-only; Terminal-Bench 2.1 with Terminus 2, no SWE harness stated."
+  },
+  {
+   "id": "nemotron-3-5-lightning-30b-a3b",
+   "name": "Nemotron 3.5 Lightning 30B-A3B",
+   "vendor": "NVIDIA",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "30B-A3B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 51.56,
+    "swe_multilingual": 39.33,
+    "terminal_bench_2_1": 24.58
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+    "swe_multilingual": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+    "terminal_bench_2_1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Hybrid Mamba-2/MoE model, vendor numbers via NeMo Evaluator (BF16). Vals.ai measures only 10.9 on Terminal-Bench 2.1 with Terminus 2.",
+   "hybrid": true
+  },
+  {
+   "id": "granite-4-2-30b",
+   "name": "Granite 4.2 30B",
+   "vendor": "IBM",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "30B",
+   "local_class": "medium",
+   "scores": {
+    "swe_verified": 57.0,
+    "swe_pro": 33.29,
+    "swe_multilingual": 41.89,
+    "terminal_bench_2_1": 29.24,
+    "livecodebench": 75.77
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/ibm-granite/granite-4.2-30b",
+    "swe_pro": "https://huggingface.co/ibm-granite/granite-4.2-30b",
+    "swe_multilingual": "https://huggingface.co/ibm-granite/granite-4.2-30b",
+    "terminal_bench_2_1": "https://huggingface.co/ibm-granite/granite-4.2-30b",
+    "livecodebench": "https://huggingface.co/ibm-granite/granite-4.2-30b"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Dense, Apache 2.0, 128k context (512k extended). Vendor-only, IBM framework on NeMo Evaluator; LiveCodeBench v6."
+  },
+  {
+   "id": "mistral-small-4",
+   "name": "Mistral Small 4 (119B-A6.5B)",
+   "vendor": "Mistral AI",
+   "released": "2026-03",
+   "open_weights": true,
+   "params": "119B-A6.5B",
+   "local_class": "large",
+   "scores": {},
+   "sources": {},
+   "provenance": {},
+   "notes": "Reasoning, vision and agentic-coding MoE, Apache 2.0. Coding results are only in chart images on the card, so no numbers are listed."
+  },
+  {
+   "id": "mistral-medium-3-5",
+   "name": "Mistral Medium 3.5 (128B)",
+   "vendor": "Mistral AI",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "128B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 77.6,
+    "terminal_bench_2_1": 38.95
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Dense. SWE-bench Verified is vendor-reported without a harness; Terminal-Bench 2.1 is Vals.ai with Terminus 2."
+  },
+  {
+   "id": "step-3-5-flash",
+   "name": "Step 3.5 Flash",
+   "vendor": "StepFun",
+   "released": "2026-02",
+   "open_weights": true,
+   "params": "197B-A11B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 74.4,
+    "terminal_bench": 51.0,
+    "livecodebench": 86.4
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/stepfun-ai/Step-3.5-Flash",
+    "terminal_bench": "https://huggingface.co/stepfun-ai/Step-3.5-Flash",
+    "livecodebench": "https://huggingface.co/stepfun-ai/Step-3.5-Flash"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-only, no harness stated; LiveCodeBench v6."
+  },
+  {
+   "id": "nemotron-3-super-120b-a12b",
+   "name": "Nemotron 3 Super 120B-A12B",
+   "vendor": "NVIDIA",
+   "released": "2026-03",
+   "open_weights": true,
+   "params": "120B-A12B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 60.47,
+    "swe_multilingual": 45.78,
+    "terminal_bench": 31.0
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+    "swe_multilingual": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+    "terminal_bench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench": "vendor"
+   },
+   "notes": "Vendor-only: SWE with OpenHands, Terminal-Bench 'Core 2.0' via Harbor. LiveCodeBench reported on v5 only, so left out.",
+   "hybrid": true
+  },
+  {
+   "id": "nemotron-3-ultra",
+   "name": "Nemotron 3 Ultra 550B-A55B",
+   "vendor": "NVIDIA",
+   "released": "2026-06",
+   "open_weights": true,
+   "params": "550B-A55B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 70.7,
+    "swe_multilingual": 67.7,
+    "terminal_bench_2_1": 56.4,
+    "livecodebench": 89.0
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+    "swe_multilingual": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+    "terminal_bench_2_1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+    "livecodebench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor numbers via NeMo Evaluator; Vals.ai measures 50.9 on Terminal-Bench 2.1. Server class."
+  },
+  {
+   "id": "kimi-k2-6",
+   "name": "Kimi K2.6",
+   "vendor": "Moonshot AI",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "1T-A32B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 80.2,
+    "swe_pro": 58.6,
+    "swe_multilingual": 76.7,
+    "terminal_bench": 66.7,
+    "livecodebench": 89.6,
+    "terminal_bench_2_1": 53.56
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "swe_pro": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "swe_multilingual": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "terminal_bench": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "livecodebench": "https://huggingface.co/moonshotai/Kimi-K2.6",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench": "vendor",
+    "livecodebench": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vendor SWE with an in-house SWE-agent framework, Terminal-Bench 2.0 with Terminus 2, averages of 10 runs. Terminal-Bench 2.1 from Vals.ai."
+  },
+  {
+   "id": "kimi-k2-7-code",
+   "name": "Kimi K2.7 Code",
+   "vendor": "Moonshot AI",
+   "released": "2026-06",
+   "open_weights": true,
+   "params": "1T-A32B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 67.04
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Coding-tuned K2.6 successor with native INT4. The vendor reports only in-house benchmarks; Terminal-Bench 2.1 from Vals.ai (Terminus 2)."
+  },
+  {
+   "id": "kimi-k3",
+   "name": "Kimi K3",
+   "vendor": "Moonshot AI",
+   "released": "2026-07",
+   "open_weights": true,
+   "params": "2.8T-A104B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 80.9
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vals.ai with Terminus 2; the vendor reports 88.3 with its own harness at max effort. No SWE-bench numbers. Datacenter scale."
+  },
+  {
+   "id": "glm-5-1",
+   "name": "GLM-5.1",
+   "vendor": "Z.ai",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "754B-A40B",
+   "local_class": "large",
+   "scores": {
+    "swe_pro": 58.4,
+    "terminal_bench": 63.5,
+    "terminal_bench_2_1": 56.93
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/zai-org/GLM-5.1",
+    "terminal_bench": "https://huggingface.co/zai-org/GLM-5.1",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "terminal_bench": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vendor Terminal-Bench 2.0 with Terminus 2; 2.1 from Vals.ai."
+  },
+  {
+   "id": "glm-5-2",
+   "name": "GLM-5.2",
+   "vendor": "Z.ai",
+   "released": "2026-06",
+   "open_weights": true,
+   "params": "753B-A40B",
+   "local_class": "large",
+   "scores": {
+    "swe_pro": 62.1,
+    "terminal_bench_2_1": 67.79
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/zai-org/GLM-5.2",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "SWE-bench Pro vendor (OpenHands, custom prompt). Terminal-Bench 2.1 from Vals.ai; the vendor reports 81.0 with Terminus 2."
+  },
+  {
+   "id": "glm-5-3",
+   "name": "GLM-5.3",
+   "vendor": "Z.ai",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "753B-A40B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 71.54
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vals.ai with Terminus 2; the vendor reports 88.2 with Claude Code. Custom license."
+  },
+  {
+   "id": "glm-5-3-flash",
+   "name": "GLM-5.3-Flash",
+   "vendor": "Z.ai",
+   "released": "2026-08",
+   "open_weights": true,
+   "params": "320B-A18B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 62.92
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vals.ai with Terminus 2; the vendor's table is an image."
+  },
+  {
+   "id": "minimax-m2-7",
+   "name": "MiniMax M2.7",
+   "vendor": "MiniMax",
+   "released": "2026-03",
+   "open_weights": true,
+   "params": "229B-A10B",
+   "local_class": "large",
+   "scores": {
+    "swe_pro": 56.22,
+    "swe_multilingual": 76.5,
+    "terminal_bench_2_1": 48.69
+   },
+   "sources": {
+    "swe_pro": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+    "swe_multilingual": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Release month not confirmed. The vendor's 'Terminal Bench 2' score (57.0) gives no version or harness and is left out; 2.1 from Vals.ai."
+  },
+  {
+   "id": "minimax-m3",
+   "name": "MiniMax M3",
+   "vendor": "MiniMax",
+   "released": "2026-06",
+   "open_weights": true,
+   "params": "428B-A23B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 80.5,
+    "swe_pro": 59.0,
+    "terminal_bench_2_1": 53.56
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+    "swe_pro": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vendor SWE numbers without harness notes; Terminal-Bench 2.1 from Vals.ai."
+  },
+  {
+   "id": "deepseek-v4-1-flash",
+   "name": "DeepSeek V4.1 Flash (1017)",
+   "vendor": "DeepSeek",
+   "released": "2026-10",
+   "open_weights": true,
+   "params": "552B-A16B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 74.53,
+    "terminal_bench_4": 31.2
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1",
+    "terminal_bench_4": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party",
+    "terminal_bench_4": "vendor"
+   },
+   "notes": "Terminal-Bench 2.1 from Vals.ai (the vendor reports 90.6 with its own harness at max effort); Terminal-Bench 4.0 vendor. Parameter counts differ between sources; about 510 GB download."
+  },
+  {
+   "id": "reflection-beam-1-0",
+   "name": "Reflection Beam 1.0 (501B-A23B)",
+   "vendor": "Reflection AI",
+   "released": "2026-10",
+   "open_weights": true,
+   "params": "501B-A23B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 81.6,
+    "swe_pro": 66.1,
+    "swe_multilingual": 78.3,
+    "terminal_bench_2_1": 80.1,
+    "livecodebench": 88.3
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+    "swe_pro": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+    "swe_multilingual": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+    "terminal_bench_2_1": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+    "livecodebench": "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "vendor",
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-only BF16 numbers, no harness named; SWE-bench Pro v1. Apache 2.0."
+  },
+  {
+   "id": "mimo-v2-5-pro",
+   "name": "MiMo-V2.5-Pro",
+   "vendor": "Xiaomi",
+   "released": "2026-04",
+   "open_weights": true,
+   "params": "1.02T-A42B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 78.9,
+    "swe_pro": 57.2,
+    "terminal_bench_2_1": 57.3
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
+    "swe_pro": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vendor SWE numbers without harness; Terminal-Bench 2.1 from Vals.ai."
+  },
+  {
+   "id": "mimo-v2-6-pro",
+   "name": "MiMo-V2.6-Pro",
+   "vendor": "Xiaomi",
+   "released": "2026-09",
+   "open_weights": true,
+   "params": "1.02T-A42B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 67.79
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vals.ai with Terminus 2; the vendor reports 89.9 without harness notes."
+  },
+  {
+   "id": "mimo-v2-6-flash",
+   "name": "MiMo-V2.6-Flash",
+   "vendor": "Xiaomi",
+   "released": "2026-09",
+   "open_weights": true,
+   "params": "309B-A15B",
+   "local_class": "large",
+   "scores": {
+    "terminal_bench_2_1": 76.4
+   },
+   "sources": {
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
+   },
+   "provenance": {
+    "terminal_bench_2_1": "third_party"
+   },
+   "notes": "Vals.ai with Terminus 2; the vendor reports 87.6 without harness notes."
+  },
+  {
+   "id": "hunyuan-hy3",
+   "name": "Hunyuan Hy3",
+   "vendor": "Tencent",
+   "released": "2026-07",
+   "open_weights": true,
+   "params": "295B-A21B",
+   "local_class": "large",
+   "scores": {
+    "swe_verified": 78.0,
+    "swe_pro": 57.9,
+    "swe_multilingual": 75.8,
+    "terminal_bench_2_1": 71.7
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/tencent/Hy3",
+    "swe_pro": "https://huggingface.co/tencent/Hy3",
+    "swe_multilingual": "https://huggingface.co/tencent/Hy3",
+    "terminal_bench_2_1": "https://huggingface.co/tencent/Hy3"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "swe_multilingual": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor-only; Apache 2.0."
+  }
+ ]
+}
