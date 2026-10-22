@@ -12,6 +12,7 @@
 <p align="center">
   <a href="https://localquench.com/download.html"><b>Download</b></a> ·
   <a href="https://localquench.com">Website</a> ·
+  <a href="#benchmark-your-model-from-the-command-line">Run the benchmark</a> ·
   <a href="https://localquench.com/bench.html">QuenchBench</a> ·
   <a href="https://github.com/majmichu1/local-quench/issues/new/choose">Report a problem</a>
 </p>
@@ -19,6 +20,16 @@
 <p align="center">
   <img src=".github/assets/app.png" alt="Local Quench fixing a bug with Qwen3.8 27B running in LM Studio">
 </p>
+
+## In this repository
+
+- **Local Quench**, the app: builds for Windows, Linux and Android in
+  [Releases](https://github.com/majmichu1/local-quench/releases).
+- **[`quenchbench.py`](quenchbench.py)**, a benchmark runner: measure any local model (or cloud API) on
+  QuenchBench, SWE-bench Verified, SWE-bench Multilingual, Terminal-Bench 2.0 or Aider Polyglot with
+  one command. [How to run it](#benchmark-your-model-from-the-command-line).
+- The [issue tracker](https://github.com/majmichu1/local-quench/issues) for both, and
+  [`models.json`](models.json), the model list behind the leaderboard and the model advisor.
 
 ## What it is
 
