@@ -142,9 +142,9 @@ def download(url: str, target: Path, size: int, sha256: str) -> None:
             out.write(chunk)
             digest.update(chunk)
             got += len(chunk)
-            if total:
+            if total and sys.stdout.isatty():  # a log file gets the line below, not a counter per megabyte
                 print(f"\r  {got >> 20} / {total >> 20} MB", end="", flush=True)
-    say()
+    say("\r" if sys.stdout.isatty() else f"  {got >> 20} MB downloaded")
     if total and got != total:
         tmp.unlink(missing_ok=True)
         stop(f"The download stopped after {got >> 20} of {total >> 20} MB. Run the script again.")
@@ -374,15 +374,20 @@ def follow(proc: subprocess.Popen, bench: Path, since: float) -> dict:
     seen: set[str] = set()
     run_file = None
     run: dict = {}
+    message = ""
     while True:
         finished = proc.poll() is not None
         run_file = run_file or newest_run(bench, since)
         run = read_run(run_file) or run
+        if run.get("message") and run["message"] != message and not finished:
+            message = run["message"]  # what the app is doing before the tasks: downloads, container builds
+            say(message)
         tasks = run.get("tasks") or []
         for t in tasks:
             if t.get("status") in DONE and t.get("task_id") not in seen:
                 seen.add(t["task_id"])
-                detail = f"  ({t['detail']})" if t.get("detail") and t["status"] != "passed" else ""
+                first = next((x.strip() for x in str(t.get("detail") or "").splitlines() if x.strip()), "")
+                detail = f"  ({first[:100]})" if first and t["status"] != "passed" else ""  # the full log is in the run folder
                 say(f"[{len(seen)}/{len(tasks)}] {t['status']:<7} {t['task_id']}{detail}")
         if finished:
             return read_run(run_file) or run
