@@ -18,7 +18,7 @@ All three are free of charge. The app is a public beta and may change or stop at
 
 ## 3. Technical requirements
 
-For the website: a current web browser. For the app: Linux (x86-64) or Windows 10 or 11 (x86-64), and a model server such as LM Studio, llama.cpp, Ollama or vLLM, or an account with a cloud provider. For phone access: Android with the Local Quench app, or a browser on iPhone or iPad, plus Tailscale on both devices. Tailscale is a third-party service of Tailscale Inc., installed and used under its own terms (business use needs a paid Tailscale plan); Local Quench does not provide it, is not affiliated with Tailscale Inc. and gives no warranty for it. Tailscale is a trademark of Tailscale Inc. For chat sharing: an internet connection.
+For the website: a current web browser. For the app: Linux (x86-64) or Windows 10 or 11 (x86-64), and a model server such as LM Studio, llama.cpp, Ollama or vLLM, or an account with a cloud provider. For phone access: Android with the Local Quench app, directly or with Tailscale on both devices; or a browser on iPhone or iPad, with Tailscale on both devices. Tailscale is a third-party service of Tailscale Inc., installed and used under its own terms (check them, for example for use at work); Local Quench does not provide it, is not affiliated with Tailscale Inc. and gives no warranty for it. Tailscale is a trademark of Tailscale Inc. For chat sharing: an internet connection.
 
 ## 4. Your obligations
 
@@ -60,7 +60,7 @@ Wszystkie trzy są bezpłatne. Aplikacja jest w publicznej wersji beta i może s
 
 ## 3. Wymagania techniczne
 
-Strona: aktualna przeglądarka internetowa. Aplikacja: Linux (x86-64) albo Windows 10 lub 11 (x86-64) oraz serwer modeli, np. LM Studio, llama.cpp, Ollama lub vLLM, albo konto u dostawcy w chmurze. Dostęp z telefonu: Android z aplikacją Local Quench albo przeglądarka na iPhonie lub iPadzie, oraz Tailscale na obu urządzeniach. Tailscale to usługa firmy Tailscale Inc., instalowana i używana na jej własnych warunkach (użycie w firmie wymaga płatnego planu Tailscale); Local Quench jej nie dostarcza, nie jest powiązany z Tailscale Inc. i nie udziela na nią gwarancji. Tailscale jest znakiem towarowym Tailscale Inc. Udostępnianie czatów: połączenie z internetem.
+Strona: aktualna przeglądarka internetowa. Aplikacja: Linux (x86-64) albo Windows 10 lub 11 (x86-64) oraz serwer modeli, np. LM Studio, llama.cpp, Ollama lub vLLM, albo konto u dostawcy w chmurze. Dostęp z telefonu: Android z aplikacją Local Quench, bezpośrednio albo z Tailscale na obu urządzeniach; albo przeglądarka na iPhonie lub iPadzie, z Tailscale na obu urządzeniach. Tailscale to usługa firmy Tailscale Inc., instalowana i używana na jej własnych warunkach (sprawdź je, np. przy użyciu w pracy); Local Quench jej nie dostarcza, nie jest powiązany z Tailscale Inc. i nie udziela na nią gwarancji. Tailscale jest znakiem towarowym Tailscale Inc. Udostępnianie czatów: połączenie z internetem.
 
 ## 4. Twoje obowiązki
 
