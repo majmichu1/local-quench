@@ -130,7 +130,9 @@ data sharing, which is off until you say yes, and asks again per benchmark resul
 quick QuenchBench on the candidates. Results on your own hardware beat any leaderboard.
 
 **Is the source code available?** No. This repository holds the releases, the issue tracker and the
-benchmark script. The QuenchBench tasks are kept private too, so that new models aren't trained on them.
+benchmark script. The QuenchBench tasks are not published on their own: they ship inside the app, where the
+sandbox hides them from the commands a model runs, and every task file carries a canary so model makers can
+keep them out of training data.
 
 ## Feedback
 

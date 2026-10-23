@@ -9,7 +9,9 @@ or a note the harness adds to the conversation. Three parts:
 
 ## Tools
 
-22 tools, plus `rename_symbol` when a language server for the project is installed.
+23 tools, plus `rename_symbol` when a language server for the project is installed. `mcp` and `load_skill` are
+offered only when an MCP server or a skill is configured. Which tools a model gets depends on the tool set
+(`tool_set`): **auto** (the default) gives the light tier the light set and strong models every tool.
 
 | Tool | What it does |
 | --- | --- |
@@ -42,10 +44,14 @@ or a note the harness adds to the conversation. Three parts:
 `find_files`, `repo_map`, `find_symbol`, `find_references`, `git`, `web_search`, `fetch_webpage`) and
 `run_command` limited to read-only commands (`ls`, `grep`, `cat`, `git log`...).
 
-**The core tool set** (`tool_set=core`) is 10 tools: `read_file`, `edit_file`, `create_file`, `delete_file`,
-`list_dir`, `search_code`, `find_files`, `run_command`, `run_tests`, `todo_write`.
+**The light tool set** (`tool_set=light`, the light tier's default) is 15 tools: the core set plus
+`inspect_file_outline`, `git`, `web_search` and `fetch_webpage`. **The core tool set** (`tool_set=core`) is 11
+tools: `read_file`, `edit_file`, `create_file`, `delete_file`, `list_dir`, `search_code`, `find_files`,
+`run_command`, `run_tests`, `check_process`, `todo_write`. In `whole_file` edit mode `edit_file` is left out
+(the model writes files in its reply), and in `search_replace` mode `edit_file` is the three-field tool the prompt
+describes.
 
-**In QuenchBench runs** the model gets 21 tools (or the core 10): everything above except `web_search`
+**In QuenchBench runs** the model gets the light set (13 without the web tools), or with `tool_set=full` 19: everything above except `web_search`
 and `fetch_webpage` (a task's answer must not be searchable) and `rename_symbol` (no language server
 unless the `lsp` switch says so). `mcp` and `load_skill` stay in the list, but no MCP server or skill is
 connected in a run, so every computer runs the same harness.
