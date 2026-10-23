@@ -83,12 +83,13 @@ def stop(text: str, code: int = 1) -> None:
     sys.exit(code)
 
 
-def ask(prompt: str, default: str = "") -> str:
-    """One answer; the default when nobody can answer (piped, scheduled)."""
+def ask(prompt: str, default: str = "", unattended: str | None = None) -> str:
+    """One answer: the default on Enter; when nobody can answer (piped, scheduled), `unattended` if given."""
     try:
         return input(prompt).strip() or default
     except EOFError:
-        return default
+        say()
+        return default if unattended is None else unattended
 
 
 def choose(title: str, options: list[str], default: int = 0) -> int:
@@ -101,6 +102,14 @@ def choose(title: str, options: list[str], default: int = 0) -> int:
             return default
         if answer.isdigit() and 1 <= int(answer) <= len(options):
             return int(answer) - 1
+
+
+def version_tuple(version: str) -> tuple[int, int, int]:
+    """(major, minor, patch) of "0.1.1", "v0.1.1" or "0.1.1-beta"; (0, 0, 0) when unknown."""
+    import re
+
+    m = re.match(r"^v?(\d+)\.(\d+)\.(\d+)", version or "")
+    return (int(m[1]), int(m[2]), int(m[3])) if m else (0, 0, 0)
 
 
 def get_json(url: str, headers: dict[str, str] | None = None, timeout: float = 15) -> object:
@@ -124,9 +133,12 @@ def platform_key() -> str:
 
 def app_path(home: Path) -> Path:
     if sys.platform == "win32":
-        folder = home / "app" / "local-forge"
-        new = folder / "LocalQuench.exe"  # 0.1.1 and newer; local-forge.exe before
-        return new if new.exists() else folder / "local-forge.exe"
+        # the zip holds one folder (local-forge/ so far) with LocalQuench.exe (0.1.1+) or local-forge.exe
+        for name in ("LocalQuench.exe", "local-forge.exe"):
+            found = sorted((home / "app").glob(f"*/{name}"))
+            if found:
+                return found[0]
+        return home / "app" / "local-forge" / "LocalQuench.exe"
     # the AppImage unpacked once: runs without FUSE (libfuse2 is missing on Ubuntu 22.04+ and in containers)
     return home / "app" / "squashfs-root" / "AppRun"
 
@@ -148,7 +160,11 @@ def download(url: str, target: Path, size: int, sha256: str) -> None:
     if total and got != total:
         tmp.unlink(missing_ok=True)
         stop(f"The download stopped after {got >> 20} of {total >> 20} MB. Run the script again.")
-    if sha256 and digest.hexdigest() != sha256.lower():
+    if not sha256:
+        tmp.unlink(missing_ok=True)
+        stop("The release lists no SHA-256 checksum for this build, so the download cannot be checked. "
+             "Please open an issue.")
+    if digest.hexdigest() != sha256.lower():
         tmp.unlink(missing_ok=True)
         stop("The download does not match the release's SHA-256 checksum, so it was deleted. Run the script "
              "again; if it happens twice, please open an issue.")
@@ -196,7 +212,9 @@ def install_app(home: Path, update: bool) -> tuple[Path, str]:
     if name.endswith(".zip"):
         archive = app / name
         download(build["url"], archive, int(build.get("size") or 0), str(build.get("sha256") or ""))
-        shutil.rmtree(app / "local-forge", ignore_errors=True)
+        for old in app.iterdir():  # the previous build's folder, whatever its name
+            if old.is_dir():
+                shutil.rmtree(old, ignore_errors=True)
         with zipfile.ZipFile(archive) as z:
             z.extractall(app)
         archive.unlink()
@@ -211,8 +229,9 @@ def install_app(home: Path, update: bool) -> tuple[Path, str]:
         if done.returncode != 0:
             stop(f"Could not unpack the AppImage: {done.stderr.strip()[-500:]}")
         image.unlink()
+    exe = app_path(home)
     if not exe.exists():
-        stop(f"The download did not contain {exe.name}.")
+        stop(f"The download did not contain {exe.name}. Please open an issue.")
     version_file.write_text(version)
     return exe, version
 
@@ -433,7 +452,8 @@ def offer_to_app(folder: Path, yes: bool) -> None:
     if (target / folder.name).exists():
         say("This run is already in the Local Quench app.")
         return
-    if yes or ask("Copy this run into the Local Quench app (to compare it or share it there)? [Y/n] ").lower() in YES:
+    if yes or ask("Copy this run into the Local Quench app (to compare it or share it there)? [Y/n] ",
+                  unattended="n").lower() in YES:
         target.mkdir(parents=True, exist_ok=True)
         shutil.copytree(folder, target / folder.name)
         say("Copied: open Local Quench > Benchmarks.")
@@ -456,6 +476,8 @@ def main() -> None:
     ap.add_argument("--repeats", type=int, default=1, choices=range(1, 6), metavar="N",
                     help="run every task N times, 1-5: local models are random, repeats give steadier numbers "
                          "(Local Quench 0.1.1 or newer)")
+    ap.add_argument("--remove-images", action="store_true",
+                    help="SWE-bench and Terminal-Bench: delete each task's container image after it (saves tens of GB)")
     ap.add_argument("--home", default=str(Path.home() / "QuenchBench"), help="folder for the app and the results")
     ap.add_argument("--update", action="store_true", help="download the newest Local Quench build first")
     ap.add_argument("--yes", action="store_true", help="do not ask before starting")
@@ -485,7 +507,10 @@ def main() -> None:
     say(f"\nModel {model} on {base}\nBenchmark {suite[0]}" + (f" ({size})" if suite[0] == "quenchbench" else ""))
     if cloud:
         say("This is a cloud provider: the tasks' code is sent to it, and it may cost money.")
-    if not args.yes and ask("Start? [Y/n] ").lower() not in YES:
+    if not args.yes and ask("Start? [Y/n] ", unattended="n").lower() not in YES:
+        # nobody to confirm (piped, scheduled) means no: a run can take hours, and cost money on a cloud model
+        if not sys.stdin.isatty():
+            stop("Not started: nobody can confirm here. Add --yes to start without asking.")
         return
 
     exe, version = install_app(home, args.update)
@@ -495,8 +520,10 @@ def main() -> None:
         cmd += ["--size", size]
     if args.limit:
         cmd += ["--limit", str(args.limit)]
+    if args.remove_images and suite[2]:
+        cmd += ["--remove-images"]
     if args.repeats > 1:
-        if version and tuple(int(x) for x in version.lstrip("v").split(".")[:3] if x.isdigit()) < (0, 1, 1):
+        if version and version_tuple(version) < (0, 1, 1):
             stop(f"--repeats needs Local Quench 0.1.1 or newer; this one is {version}. Add --update.")
         cmd += ["--repeats", str(args.repeats)]
     # the app's own settings stay as they are (LQ_HOME from 0.1.1, FORGE_HOME before)

@@ -69,11 +69,11 @@ and steers the model back, and every one of these rules can be switched off and 
 **Windows:** download `LocalQuench-windows-x64.zip`, unzip it anywhere and start `LocalQuench.exe`
 (`local-forge.exe` in 0.1.0).
 
-**Linux:** download `LocalQuench-x86_64.AppImage`, make it executable and run it:
+**Linux:** download `LocalQuench-<version>-x86_64.AppImage`, make it executable and run it:
 
 ```bash
-chmod +x LocalQuench-x86_64.AppImage
-./LocalQuench-x86_64.AppImage
+chmod +x LocalQuench-*-x86_64.AppImage
+./LocalQuench-*-x86_64.AppImage
 ```
 
 **Android:** install `LocalQuench.apk` (`LocalForge.apk` in 0.1.0) and pair it with the desktop app (Settings > Phone & tablet).

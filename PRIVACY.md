@@ -60,7 +60,9 @@ Giving us personal data is voluntary: the website and the app work fully without
 
 We will announce changes to this policy on this page and, for chat sharing, in the app before they apply. A change to what shared chats are used for needs your new consent.
 
-# Polityka prywatności
+<a id="pl"></a>
+
+## Polityka prywatności
 
 Local Quench działa na Twoim komputerze. Twój kod, czaty i klucze zostają na nim. Ta strona opisuje nieliczne sytuacje, w których dane osobowe go opuszczają: wizyta na tej stronie, sprawdzanie aktualizacji i wyszukiwanie w sieci przez aplikację oraz czaty, które sam zdecydujesz się nam udostępnić.
 

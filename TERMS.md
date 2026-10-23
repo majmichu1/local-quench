@@ -1,6 +1,6 @@
 # Terms
 
-_Last updated: 21 October 2026. The same text is on [localquench.com/terms.html](https://localquench.com/terms.html); Polish below the English._
+_Last updated: 23 October 2026. The same text is on [localquench.com/terms.html](https://localquench.com/terms.html); Polish below the English._
 
 The rules for using this website, the Local Quench app and the optional sharing of chats. They are the terms of service required by the Polish Act on providing services by electronic means.
 
@@ -40,7 +40,9 @@ Send complaints to <contact@localquench.com> or by post to the address above, wi
 
 We may change these terms for important reasons (a change of the law, of the services or of security needs). We announce changes on this page at least 7 days before they apply; for chat sharing also in the app. Polish law applies, without taking away the protection the law of your country gives you as a consumer.
 
-# Regulamin
+<a id="pl"></a>
+
+## Regulamin
 
 Zasady korzystania z tej strony, aplikacji Local Quench i opcjonalnego udostępniania czatów. To regulamin świadczenia usług drogą elektroniczną w rozumieniu ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną.
 
