@@ -66,7 +66,8 @@ and steers the model back, and every one of these rules can be switched off and 
 
 ## Install
 
-**Windows:** download `LocalQuench-windows-x64.zip`, unzip it anywhere and start `local-forge.exe`.
+**Windows:** download `LocalQuench-windows-x64.zip`, unzip it anywhere and start `LocalQuench.exe`
+(`local-forge.exe` in 0.1.0).
 
 **Linux:** download `LocalQuench-x86_64.AppImage`, make it executable and run it:
 
@@ -75,7 +76,7 @@ chmod +x LocalQuench-x86_64.AppImage
 ./LocalQuench-x86_64.AppImage
 ```
 
-**Android:** install `LocalForge.apk` and pair it with the desktop app (Settings > Phone & tablet).
+**Android:** install `LocalQuench.apk` (`LocalForge.apk` in 0.1.0) and pair it with the desktop app (Settings > Phone & tablet).
 
 Everything is on the [download page](https://localquench.com/download.html) and in the
 [releases](https://github.com/majmichu1/local-quench/releases). The app updates itself.
@@ -98,12 +99,12 @@ it can copy the run into the app, where you can compare it with other runs and s
 Without questions, e.g. for an overnight run:
 
 ```bash
-python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suite forge --size quick --yes
+python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suite quenchbench --size quick --yes
 ```
 
 | Benchmark | `--suite` | Needs |
 | --- | --- | --- |
-| QuenchBench: which kinds of coding work the model handles | `forge` (`--size smoke`, `quick` or `full`) | the languages' toolchains (checked before the start) |
+| QuenchBench: which kinds of coding work the model handles | `quenchbench` (`--size smoke`, `quick` or `full`) | the languages' toolchains (checked before the start) |
 | SWE-bench Verified, 500 Python issues | `swe-verified` | Docker or Podman |
 | SWE-bench Multilingual, 300 issues in 9 languages (beta) | `swe-multilingual` | Docker or Podman |
 | Terminal-Bench 2.0, 89 tasks (beta) | `terminal-bench-2` | Docker or Podman |

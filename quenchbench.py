@@ -2,7 +2,7 @@
 """Run QuenchBench (or SWE-bench, Terminal-Bench, Aider Polyglot) on your own model, from the command line.
 
     python3 quenchbench.py                  # asks: model server, model, benchmark, size
-    python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suite forge --size quick --yes
+    python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suite quenchbench --size quick --yes
 
 What it does:
   1. asks which model server to use and lists the models it serves,
@@ -55,7 +55,7 @@ SERVERS = [  # id, label, address, cloud (needs an API key), environment variabl
 ]
 
 SUITES = [  # id, label, needs Docker or Podman, free disk space it needs (GB)
-    ("forge", "QuenchBench: which kinds of coding work the model handles (sections x languages)", False, 2),
+    ("quenchbench", "QuenchBench: which kinds of coding work the model handles (sections x languages)", False, 2),
     ("aider-polyglot", "Aider Polyglot: 225 Exercism exercises in 6 languages (beta)", True, 5),
     ("swe-verified", "SWE-bench Verified: 500 real GitHub issues in Python", True, 60),
     ("swe-multilingual", "SWE-bench Multilingual: 300 issues in 9 languages (beta)", True, 60),
@@ -69,6 +69,7 @@ SIZES = [  # QuenchBench only
 ]
 
 DONE = ("passed", "failed", "error", "skipped")
+APP_SUITE = {"quenchbench": "forge"}  # the id the app has used since before the name QuenchBench (every version knows it)
 YES = ("", "y", "yes", "t", "tak")
 LONG_LIST = 40  # more models than this (cloud providers): type the id instead of picking a number
 
@@ -123,7 +124,9 @@ def platform_key() -> str:
 
 def app_path(home: Path) -> Path:
     if sys.platform == "win32":
-        return home / "app" / "local-forge" / "local-forge.exe"
+        folder = home / "app" / "local-forge"
+        new = folder / "LocalQuench.exe"  # 0.1.1 and newer; local-forge.exe before
+        return new if new.exists() else folder / "local-forge.exe"
     # the AppImage unpacked once: runs without FUSE (libfuse2 is missing on Ubuntu 22.04+ and in containers)
     return home / "app" / "squashfs-root" / "AppRun"
 
@@ -439,7 +442,8 @@ def main() -> None:
     ap.add_argument("--server", default="", help="model server address, e.g. http://localhost:1234")
     ap.add_argument("--key-env", default="", metavar="VAR", help="environment variable that holds the API key")
     ap.add_argument("--model", default="", help="model id as the server lists it")
-    ap.add_argument("--suite", default="", choices=[s[0] for s in SUITES], help="which benchmark")
+    ap.add_argument("--suite", default="", choices=[s[0] for s in SUITES] + ["forge"],
+                    help="which benchmark (forge: the old name of quenchbench)")
     ap.add_argument("--size", default="", choices=[s[0] for s in SIZES], help="QuenchBench: how many tasks")
     ap.add_argument("--limit", type=int, default=0,
                     help="only the first N tasks: to check that everything works, not for a score (0 = all)")
@@ -459,7 +463,7 @@ def main() -> None:
     pid, base, key, cloud = pick_server(args)
     model = pick_model(args, base, key)
     if args.suite:
-        suite = next(s for s in SUITES if s[0] == args.suite)
+        suite = next(s for s in SUITES if s[0] == {"forge": "quenchbench"}.get(args.suite, args.suite))
     else:
         suite = SUITES[choose("Which benchmark?", [s[1] for s in SUITES])]
     if suite[2] and not container_ready():
@@ -470,18 +474,19 @@ def main() -> None:
     if free_gb < suite[3]:
         say(f"Warning: {free_gb:.0f} GB free; {suite[0]} needs about {suite[3]} GB (container images and task files).")
     size = args.size or "full"
-    if suite[0] == "forge" and not args.size:
+    if suite[0] == "quenchbench" and not args.size:
         size = SIZES[choose("How much of QuenchBench?", [f"{n}: {d}" for n, d in SIZES], default=1)][0]
 
-    say(f"\nModel {model} on {base}\nBenchmark {suite[0]}" + (f" ({size})" if suite[0] == "forge" else ""))
+    say(f"\nModel {model} on {base}\nBenchmark {suite[0]}" + (f" ({size})" if suite[0] == "quenchbench" else ""))
     if cloud:
         say("This is a cloud provider: the tasks' code is sent to it, and it may cost money.")
     if not args.yes and ask("Start? [Y/n] ").lower() not in YES:
         return
 
     exe, version = install_app(home, args.update)
-    cmd = [str(exe), "bench", "--suite", suite[0], "--model", model, "--task-minutes", str(args.task_minutes)]
-    if suite[0] == "forge":
+    cmd = [str(exe), "bench", "--suite", APP_SUITE.get(suite[0], suite[0]), "--model", model,
+           "--task-minutes", str(args.task_minutes)]
+    if suite[0] == "quenchbench":
         cmd += ["--size", size]
     if args.limit:
         cmd += ["--limit", str(args.limit)]
@@ -489,7 +494,8 @@ def main() -> None:
         if version and tuple(int(x) for x in version.lstrip("v").split(".")[:3] if x.isdigit()) < (0, 1, 1):
             stop(f"--repeats needs Local Quench 0.1.1 or newer; this one is {version}. Add --update.")
         cmd += ["--repeats", str(args.repeats)]
-    env = {**os.environ, "FORGE_HOME": str(home / "data")}  # the app's own settings stay as they are
+    # the app's own settings stay as they are (LQ_HOME from 0.1.1, FORGE_HOME before)
+    env = {**os.environ, "LQ_HOME": str(home / "data"), "FORGE_HOME": str(home / "data")}
     write_settings(config, pid, base, key, cloud, model)
     log = home / "last-run.log"
     since = time.time() - 1
