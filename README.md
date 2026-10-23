@@ -109,7 +109,9 @@ python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suit
 | Terminal-Bench 2.0, 89 tasks (beta) | `terminal-bench-2` | Docker or Podman |
 | Aider Polyglot, 225 exercises (beta) | `aider-polyglot` | Docker or Podman |
 
-`--limit 20` runs only the first 20 tasks; `python3 quenchbench.py --help` lists the rest. Cloud
+`--repeats 3` runs every task three times for steadier numbers (local models are random);
+`--limit 20` runs only the first 20 tasks, to check the setup. `python3 quenchbench.py --help` lists the
+rest. The script checks every download against the release's SHA-256 checksum. Cloud
 providers read the key from `NVIDIA_API_KEY` or `OPENROUTER_API_KEY` (or ask for it); it is never
 saved.
 
