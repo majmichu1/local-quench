@@ -122,7 +122,7 @@ saved.
 
 **Does my code leave my computer?** Not with a local model. Nothing is uploaded unless you turn on
 data sharing, which is off until you say yes, and asks again per benchmark result. Details in the
-[privacy policy](https://localquench.com/privacy.html).
+[privacy policy](PRIVACY.md).
 
 **Which model should I use?** Open the model advisor in the app, enter your graphics card, and run a
 quick QuenchBench on the candidates. Results on your own hardware beat any leaderboard.
@@ -140,4 +140,4 @@ Security problems: please report them privately, see [SECURITY.md](SECURITY.md).
 
 ---
 
-<sub>Free to use under the <a href="https://localquench.com/terms.html">terms</a>. Not affiliated with LM Studio, llama.cpp, Ollama, vLLM or any model vendor.</sub>
+<sub>Free to use under the <a href="TERMS.md">terms</a>. Not affiliated with LM Studio, llama.cpp, Ollama, vLLM or any model vendor.</sub>

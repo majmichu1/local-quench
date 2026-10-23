@@ -1,5 +1,6 @@
 {
- "updated": "2026-10-22",
+ "schema": 1,
+ "updated": "2026-10-23",
  "benchmarks": {
   "swe_verified": {
    "name": "SWE-bench Verified",
