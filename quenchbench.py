@@ -476,6 +476,9 @@ def main() -> None:
     ap.add_argument("--repeats", type=int, default=1, choices=range(1, 6), metavar="N",
                     help="run every task N times, 1-5: local models are random, repeats give steadier numbers "
                          "(Local Quench 0.1.1 or newer)")
+    ap.add_argument("--harness", action="append", default=[], metavar="KEY=VALUE",
+                    help="one harness switch for this run, e.g. continue_nudge=false (repeatable; docs/FEATURES.md; "
+                         "Local Quench 0.1.1 or newer)")
     ap.add_argument("--remove-images", action="store_true",
                     help="SWE-bench and Terminal-Bench: delete each task's container image after it (saves tens of GB)")
     ap.add_argument("--home", default=str(Path.home() / "QuenchBench"), help="folder for the app and the results")
@@ -522,6 +525,11 @@ def main() -> None:
         cmd += ["--limit", str(args.limit)]
     if args.remove_images and suite[2]:
         cmd += ["--remove-images"]
+    if args.harness:
+        if version and version_tuple(version) < (0, 1, 1):
+            stop(f"--harness needs Local Quench 0.1.1 or newer; this one is {version}. Add --update.")
+        for pair in args.harness:
+            cmd += ["--harness", pair]
     if args.repeats > 1:
         if version and version_tuple(version) < (0, 1, 1):
             stop(f"--repeats needs Local Quench 0.1.1 or newer; this one is {version}. Add --update.")
