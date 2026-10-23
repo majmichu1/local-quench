@@ -735,9 +735,9 @@
     "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
    },
    "provenance": {
-    "swe_verified": "third-party",
-    "swe_pro": "third-party",
-    "terminal_bench": "third-party",
+    "swe_verified": "third_party",
+    "swe_pro": "third_party",
+    "terminal_bench": "third_party",
     "livecodebench": "vendor"
    },
    "notes": "LCB v6 is Google-reported. SWE-V/Pro/TB2 come from Qwen's comparison table (Qwen internal scaffold; TB2 Terminus-2), not Google. Released 2026-03-31 per Google's release log (some reports say Apr 2)."
@@ -763,9 +763,9 @@
     "livecodebench": "https://huggingface.co/google/gemma-4-31B-it"
    },
    "provenance": {
-    "swe_verified": "third-party",
-    "swe_pro": "third-party",
-    "terminal_bench": "third-party",
+    "swe_verified": "third_party",
+    "swe_pro": "third_party",
+    "terminal_bench": "third_party",
     "livecodebench": "vendor"
    },
    "notes": "LCB v6 Google-reported. SWE/TB2 values are from Qwen's comparison table (third-party)."
@@ -1036,7 +1036,7 @@
   {
    "id": "glm-5",
    "name": "GLM-5",
-   "vendor": "Zhipu AI (Z.ai)",
+   "vendor": "Z.ai",
    "released": "2026-02",
    "open_weights": true,
    "params": "744B-A40B",
@@ -1058,7 +1058,7 @@
   {
    "id": "glm-4-7",
    "name": "GLM-4.7",
-   "vendor": "Zhipu AI (Z.ai)",
+   "vendor": "Z.ai",
    "released": "2025-12",
    "open_weights": true,
    "params": "355B-A32B",
@@ -1080,7 +1080,7 @@
   {
    "id": "glm-4-7-flash",
    "name": "GLM-4.7-Flash",
-   "vendor": "Zhipu AI (Z.ai)",
+   "vendor": "Z.ai",
    "released": "2026-01",
    "open_weights": true,
    "params": "30B-A3B",
@@ -1102,7 +1102,7 @@
   {
    "id": "glm-4-6",
    "name": "GLM-4.6",
-   "vendor": "Zhipu AI (Z.ai)",
+   "vendor": "Z.ai",
    "released": "2025-09",
    "open_weights": true,
    "params": "355B-A32B",
@@ -1591,48 +1591,51 @@
   {
    "id": "qwen3-8-27b",
    "name": "Qwen3.8 27B",
-   "vendor": "Alibaba",
+   "vendor": "Alibaba Qwen",
    "released": "2026-08",
    "open_weights": true,
    "params": "27B",
    "local_class": "medium",
    "scores": {
     "swe_pro": 61.7,
-    "terminal_bench_2_1": 73.0,
+    "terminal_bench_2_1": 58.43,
     "livecodebench": 90.3
    },
    "sources": {
     "swe_pro": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "terminal_bench_2_1": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1",
     "livecodebench": "https://huggingface.co/Qwen/Qwen3.8-27B"
    },
    "provenance": {
     "swe_pro": "vendor",
-    "terminal_bench_2_1": "vendor",
+    "terminal_bench_2_1": "third_party",
     "livecodebench": "vendor"
    },
-   "notes": "Dense vision-language model, Apache 2.0, 262k context. Vendor model card: SWE-bench Pro 61.7, Terminal-Bench 2.1 73.0 (Terminus harness), LiveCodeBench v6 90.3. No SWE-bench Verified or Aider numbers; no official leaderboard entries yet. A 4-bit quant is about 17-18 GB.",
+   "notes": "Dense vision-language model, Apache 2.0, 262k context. Vendor model card: SWE-bench Pro 61.7, LiveCodeBench v6 90.3. No SWE-bench Verified or Aider numbers; no official leaderboard entries yet. A 4-bit quant is about 17-18 GB. Terminal-Bench 2.1 is Vals.ai with Terminus 2; the vendor reports 73.0.",
    "hybrid": true
   },
   {
    "id": "qwen3-8-flash-next",
    "name": "Qwen3.8 Flash-Next",
-   "vendor": "Alibaba",
+   "vendor": "Alibaba Qwen",
    "released": "2026-08",
    "open_weights": true,
    "params": "125B-A6B",
    "local_class": "large",
    "scores": {
     "swe_pro": 62.5,
-    "livecodebench": 91.9
+    "livecodebench": 91.9,
+    "swe_multilingual": 81.0
    },
    "sources": {
     "swe_pro": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
-    "livecodebench": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+    "livecodebench": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+    "swe_multilingual": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
    },
    "provenance": {
     "swe_pro": "vendor",
-    "livecodebench": "vendor"
+    "livecodebench": "vendor",
+    "swe_multilingual": "vendor"
    },
    "notes": "MoE, qwen-community-1.0 license. Vendor model card: SWE-bench Pro 62.5, LiveCodeBench v6 91.9 (also SWE-bench Multilingual 81.0).",
    "hybrid": true
@@ -1640,27 +1643,27 @@
   {
    "id": "qwen3-8-max",
    "name": "Qwen3.8 Max",
-   "vendor": "Alibaba",
+   "vendor": "Alibaba Qwen",
    "released": "2026-08",
    "open_weights": true,
    "params": "2.4T-A95B",
    "local_class": "large",
    "scores": {
     "swe_pro": 67.7,
-    "terminal_bench_2_1": 86.6,
+    "terminal_bench_2_1": 67.42,
     "terminal_bench_4": 27.0
    },
    "sources": {
     "swe_pro": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
-    "terminal_bench_2_1": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1",
     "terminal_bench_4": "https://www.tbench.ai/leaderboard/terminal-bench/4.0"
    },
    "provenance": {
     "swe_pro": "vendor",
-    "terminal_bench_2_1": "vendor",
+    "terminal_bench_2_1": "third_party",
     "terminal_bench_4": "official"
    },
-   "notes": "Closed API model built on the open Qwen3.8-2.4T-A95B weights. TB 4.0: official tbench.ai entry Qwen3.8-Max-0902 with the Claude Code agent, 27.0 +/- 3.8 (2026-09-02). Other numbers from the model card.",
+   "notes": "Closed API model built on the open Qwen3.8-2.4T-A95B weights. TB 4.0: official tbench.ai entry Qwen3.8-Max-0902 with the Claude Code agent, 27.0 +/- 3.8 (2026-09-02). Other numbers from the model card. Terminal-Bench 2.1 is Vals.ai with Terminus 2; the vendor reports 86.6.",
    "hybrid": true
   },
   {
@@ -1675,17 +1678,20 @@
    "scores": {
     "swe_verified": 70.6,
     "swe_pro": 47.5,
-    "terminal_bench_2_1": 46.2
+    "terminal_bench_2_1": 46.2,
+    "swe_multilingual": 54.4
    },
    "sources": {
     "swe_verified": "https://ornith.ai/ornith_1_5.html",
     "swe_pro": "https://ornith.ai/ornith_1_5.html",
-    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html"
+    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html",
+    "swe_multilingual": "https://ornith.ai/ornith_1_5.html"
    },
    "provenance": {
     "swe_verified": "vendor",
     "swe_pro": "vendor",
-    "terminal_bench_2_1": "vendor"
+    "terminal_bench_2_1": "vendor",
+    "swe_multilingual": "vendor"
    },
    "notes": "Vendor numbers (Terminal-Bench 2.1 with Terminus 2; SWE-bench Multilingual 54.4). Built on Qwen3.5 and Gemma 4 bases via Ornith 1.0. An independent RTX 5090 test did not confirm the agentic coding margins."
   },
@@ -1701,17 +1707,20 @@
    "scores": {
     "swe_verified": 79.0,
     "swe_pro": 59.6,
-    "terminal_bench_2_1": 67.8
+    "terminal_bench_2_1": 67.8,
+    "swe_multilingual": 71.4
    },
    "sources": {
     "swe_verified": "https://ornith.ai/ornith_1_5.html",
     "swe_pro": "https://ornith.ai/ornith_1_5.html",
-    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html"
+    "terminal_bench_2_1": "https://ornith.ai/ornith_1_5.html",
+    "swe_multilingual": "https://ornith.ai/ornith_1_5.html"
    },
    "provenance": {
     "swe_verified": "vendor",
     "swe_pro": "vendor",
-    "terminal_bench_2_1": "vendor"
+    "terminal_bench_2_1": "vendor",
+    "swe_multilingual": "vendor"
    },
    "notes": "Vendor numbers (Terminal-Bench 2.1 with Terminus 2; SWE-bench Multilingual 71.4). MoE with about 3B active parameters."
   },
@@ -1879,19 +1888,19 @@
    "scores": {
     "swe_verified": 51.56,
     "swe_multilingual": 39.33,
-    "terminal_bench_2_1": 24.58
+    "terminal_bench_2_1": 10.86
    },
    "sources": {
     "swe_verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
     "swe_multilingual": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
-    "terminal_bench_2_1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1"
    },
    "provenance": {
     "swe_verified": "vendor",
     "swe_multilingual": "vendor",
-    "terminal_bench_2_1": "vendor"
+    "terminal_bench_2_1": "third_party"
    },
-   "notes": "Hybrid Mamba-2/MoE model, vendor numbers via NeMo Evaluator (BF16). Vals.ai measures only 10.9 on Terminal-Bench 2.1 with Terminus 2.",
+   "notes": "Hybrid Mamba-2/MoE model, vendor numbers via NeMo Evaluator (BF16). Terminal-Bench 2.1 is Vals.ai with Terminus 2; the vendor reports 24.58.",
    "hybrid": true
   },
   {
@@ -2022,22 +2031,22 @@
    "scores": {
     "swe_verified": 70.7,
     "swe_multilingual": 67.7,
-    "terminal_bench_2_1": 56.4,
+    "terminal_bench_2_1": 50.94,
     "livecodebench": 89.0
    },
    "sources": {
     "swe_verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
     "swe_multilingual": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
-    "terminal_bench_2_1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+    "terminal_bench_2_1": "https://vals.ai/benchmarks/terminal-bench-2-1",
     "livecodebench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16"
    },
    "provenance": {
     "swe_verified": "vendor",
     "swe_multilingual": "vendor",
-    "terminal_bench_2_1": "vendor",
+    "terminal_bench_2_1": "third_party",
     "livecodebench": "vendor"
    },
-   "notes": "Vendor numbers via NeMo Evaluator; Vals.ai measures 50.9 on Terminal-Bench 2.1. Server class."
+   "notes": "Vendor numbers via NeMo Evaluator. Server class. Terminal-Bench 2.1 is Vals.ai with Terminus 2; the vendor reports 56.4."
   },
   {
    "id": "kimi-k2-6",
