@@ -62,10 +62,10 @@ SUITES = [  # id, label, needs Docker or Podman, free disk space it needs (GB)
     ("terminal-bench-2", "Terminal-Bench 2.0: 89 tasks in a terminal (beta)", True, 40),
 ]
 
-SIZES = [  # QuenchBench only
-    ("smoke", "a handful of tasks, a few minutes: checks that everything works"),
-    ("quick", "a sample of every section, about an hour on a local GPU"),
-    ("full", "all tasks, several hours"),
+SIZES = [  # QuenchBench only; the same names and numbers as the app and localquench.com/bench.html
+    ("smoke", "ultra quick: one task per kind of work (13), about one to two hours on a laptop GPU"),
+    ("quick", "quick: one task per kind of work and language (63)"),
+    ("full", "full: every task (537), for comparing models closely"),
 ]
 
 DONE = ("passed", "failed", "error", "skipped")
@@ -502,7 +502,7 @@ def main() -> None:
         say(f"Warning: {free_gb:.0f} GB free; {suite[0]} needs about {suite[3]} GB (container images and task files).")
     size = args.size or "full"
     if suite[0] == "quenchbench" and not args.size:
-        size = SIZES[choose("How much of QuenchBench?", [f"{n}: {d}" for n, d in SIZES], default=1)][0]
+        size = SIZES[choose("How much of QuenchBench?", [d for _, d in SIZES], default=1)][0]
 
     say(f"\nModel {model} on {base}\nBenchmark {suite[0]}" + (f" ({size})" if suite[0] == "quenchbench" else ""))
     if cloud:

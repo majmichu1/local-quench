@@ -14,11 +14,11 @@ The website and the app are provided by Michał Majkowski, ul. Nazaretańska 12,
 - **The app:** software you install and run on your own computer. It works with language models you run yourself or with cloud providers you connect with your own account.
 - **Chat sharing (optional):** sending your chats to us to improve Local Quench, as described in the [privacy policy](PRIVACY.md) and in [how sharing works](https://localquench.com/docs-data.html).
 
-All three are free of charge. The app is in private testing and may change or stop at any time.
+All three are free of charge. The app is a public beta and may change or stop at any time.
 
 ## 3. Technical requirements
 
-For the website: a current web browser. For the app: Linux (x86-64) or Windows 10 or 11 (x86-64), and a model server such as LM Studio or llama.cpp, or an account with a cloud provider. For phone access: Android with the Local Quench app, or a browser on iPhone or iPad, plus Tailscale on both devices. Tailscale is a third-party service of Tailscale Inc., installed and used under its own terms (business use needs a paid Tailscale plan); Local Quench does not provide it, is not affiliated with Tailscale Inc. and gives no warranty for it. Tailscale is a trademark of Tailscale Inc. For chat sharing: an internet connection.
+For the website: a current web browser. For the app: Linux (x86-64) or Windows 10 or 11 (x86-64), and a model server such as LM Studio, llama.cpp, Ollama or vLLM, or an account with a cloud provider. For phone access: Android with the Local Quench app, or a browser on iPhone or iPad, plus Tailscale on both devices. Tailscale is a third-party service of Tailscale Inc., installed and used under its own terms (business use needs a paid Tailscale plan); Local Quench does not provide it, is not affiliated with Tailscale Inc. and gives no warranty for it. Tailscale is a trademark of Tailscale Inc. For chat sharing: an internet connection.
 
 ## 4. Your obligations
 
@@ -56,11 +56,11 @@ Stronę i aplikację udostępnia Michał Majkowski, ul. Nazaretańska 12, 30-685
 - **Aplikacja:** oprogramowanie, które instalujesz i uruchamiasz na własnym komputerze. Działa z modelami językowymi uruchamianymi przez Ciebie albo z dostawcami w chmurze podłączonymi na Twoim koncie.
 - **Udostępnianie czatów (opcjonalne):** przesyłanie nam Twoich czatów w celu ulepszania Local Quench, opisane w [polityce prywatności](PRIVACY.md#pl) i w [opisie udostępniania](https://localquench.com/docs-data.html).
 
-Wszystkie trzy są bezpłatne. Aplikacja jest w fazie prywatnych testów i może się zmienić lub przestać być udostępniana w każdej chwili.
+Wszystkie trzy są bezpłatne. Aplikacja jest w publicznej wersji beta i może się zmienić lub przestać być udostępniana w każdej chwili.
 
 ## 3. Wymagania techniczne
 
-Strona: aktualna przeglądarka internetowa. Aplikacja: Linux (x86-64) albo Windows 10 lub 11 (x86-64) oraz serwer modeli, np. LM Studio lub llama.cpp, albo konto u dostawcy w chmurze. Dostęp z telefonu: Android z aplikacją Local Quench albo przeglądarka na iPhonie lub iPadzie, oraz Tailscale na obu urządzeniach. Tailscale to usługa firmy Tailscale Inc., instalowana i używana na jej własnych warunkach (użycie w firmie wymaga płatnego planu Tailscale); Local Quench jej nie dostarcza, nie jest powiązany z Tailscale Inc. i nie udziela na nią gwarancji. Tailscale jest znakiem towarowym Tailscale Inc. Udostępnianie czatów: połączenie z internetem.
+Strona: aktualna przeglądarka internetowa. Aplikacja: Linux (x86-64) albo Windows 10 lub 11 (x86-64) oraz serwer modeli, np. LM Studio, llama.cpp, Ollama lub vLLM, albo konto u dostawcy w chmurze. Dostęp z telefonu: Android z aplikacją Local Quench albo przeglądarka na iPhonie lub iPadzie, oraz Tailscale na obu urządzeniach. Tailscale to usługa firmy Tailscale Inc., instalowana i używana na jej własnych warunkach (użycie w firmie wymaga płatnego planu Tailscale); Local Quench jej nie dostarcza, nie jest powiązany z Tailscale Inc. i nie udziela na nią gwarancji. Tailscale jest znakiem towarowym Tailscale Inc. Udostępnianie czatów: połączenie z internetem.
 
 ## 4. Twoje obowiązki
 

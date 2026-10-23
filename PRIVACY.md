@@ -10,7 +10,7 @@ The controller of personal data described here is Michał Majkowski, e-mail <con
 
 ## 2. This website
 
-**Server logs.** When you open a page, the hosting provider's server records your IP address, the time, the page requested, the browser's user agent and the referring page. We use these logs only to keep the site running and secure (for example to find attacks or errors). Legal basis: our legitimate interest in a working, secure website (Art. 6(1)(f) GDPR). The logs are kept for 14 days and then deleted by the hosting provider.
+**Server logs.** When you open a page, the hosting provider's server records your IP address, the time, the page requested, the browser's user agent and the referring page. We use these logs only to keep the site running and secure (for example to find attacks or errors). Legal basis: our legitimate interest in a working, secure website (Art. 6(1)(f) GDPR). The hosting provider keeps the logs for a limited time under its own rules (14 days at the time of writing) and then deletes them.
 
 **Cookies and similar.** This website sets no cookies and stores nothing in your browser (no local storage, no tracking pixels, no analytics, no advertising). That is why it shows no cookie banner: there is nothing to consent to. Fonts are served from this server, not from Google or another font service. The model advisor runs entirely in your browser; what you type into it is not sent anywhere.
 
@@ -72,7 +72,7 @@ Administratorem danych osobowych opisanych na tej stronie jest Michał Majkowski
 
 ## 2. Ta strona internetowa
 
-**Logi serwera.** Gdy otwierasz stronę, serwer dostawcy hostingu zapisuje Twój adres IP, czas, otwieraną stronę, identyfikator przeglądarki i stronę, z której przyszedłeś. Używamy tych logów wyłącznie do utrzymania strony i jej bezpieczeństwa (np. do wykrywania ataków i błędów). Podstawa prawna: nasz prawnie uzasadniony interes w działającej i bezpiecznej stronie (art. 6 ust. 1 lit. f RODO). Logi są przechowywane przez 14 dni, a następnie usuwane przez dostawcę hostingu.
+**Logi serwera.** Gdy otwierasz stronę, serwer dostawcy hostingu zapisuje Twój adres IP, czas, otwieraną stronę, identyfikator przeglądarki i stronę, z której przyszedłeś. Używamy tych logów wyłącznie do utrzymania strony i jej bezpieczeństwa (np. do wykrywania ataków i błędów). Podstawa prawna: nasz prawnie uzasadniony interes w działającej i bezpiecznej stronie (art. 6 ust. 1 lit. f RODO). Dostawca hostingu przechowuje logi przez ograniczony czas według własnych zasad (14 dni w chwili pisania), a następnie je usuwa.
 
 **Pliki cookies i podobne technologie.** Ta strona nie ustawia plików cookies i niczego nie zapisuje w Twojej przeglądarce (bez local storage, pikseli śledzących, analityki i reklam). Dlatego nie wyświetla banera cookies: nie ma na co wyrażać zgody. Czcionki są ładowane z tego serwera, nie z Google ani innej usługi. Doradca modeli działa w całości w Twojej przeglądarce; to, co w nim wpiszesz, nigdzie nie jest wysyłane.
 
