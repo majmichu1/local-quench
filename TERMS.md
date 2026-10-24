@@ -1,6 +1,6 @@
 # Terms
 
-_Last updated: 23 October 2026. The same text is on [localquench.com/terms.html](https://localquench.com/terms.html); Polish below the English._
+_Last updated: 24 October 2026. The same text is on [localquench.com/terms.html](https://localquench.com/terms.html); Polish below the English._
 
 The rules for using this website, the Local Quench app and the optional sharing of chats. They are the terms of service required by the Polish Act on providing services by electronic means.
 
