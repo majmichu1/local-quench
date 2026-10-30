@@ -28,6 +28,9 @@
 - **[`quenchbench.py`](quenchbench.py)**, a benchmark runner: measure any local model (or cloud API) on
   QuenchBench, SWE-bench Verified, SWE-bench Multilingual, Terminal-Bench 2.0 or Aider Polyglot with
   one command. [How to run it](#benchmark-your-model-from-the-command-line).
+- [`quenchbench-sample/`](quenchbench-sample/): 26 QuenchBench tasks (two per section, from the dev split) with their
+  hidden checks and reference solutions, and `verify.py` to check them yourself: each starting project fails its
+  checks and each reference solution passes them. The held-out tasks used for the final measurement stay private.
 - [`docs/FEATURES.md`](docs/FEATURES.md): every tool, every harness behaviour and the ablation switches
   that turn them off, to read QuenchBench results by.
 - The [issue tracker](https://github.com/majmichu1/local-quench/issues) for both, and

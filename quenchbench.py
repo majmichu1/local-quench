@@ -3,6 +3,7 @@
 
     python3 quenchbench.py                  # asks: model server, model, benchmark, size
     python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suite quenchbench --size quick --yes
+    python3 quenchbench.py ... --suite quenchbench --agent aider   # the same model and tasks in another agent
 
 What it does:
   1. asks which model server to use and lists the models it serves,
@@ -12,7 +13,10 @@ What it does:
   4. runs it and prints each task as it finishes, then the score.
 
 This script is only the launcher: the agent, the benchmark runner and the QuenchBench tasks are inside
-the app, the same as when you start a benchmark from its window.
+the app, the same as when you start a benchmark from its window. QuenchBench measures a model together with the
+agent around it; --agent runs the same tasks in another agent (Aider, opencode, OpenHands, ...) on the same model,
+to see how much the agent adds. That agent must be installed; it reaches the model through Local Quench, which
+counts its tokens.
 
 Needs Python 3.9+ and nothing else. Everything (the app, settings, results) stays in one folder,
 ~/QuenchBench by default (--home to change it); your own Local Quench settings are not touched.
@@ -67,6 +71,9 @@ SIZES = [  # QuenchBench only; the same names and numbers as the app and localqu
     ("quick", "quick: one task per kind of work and language (63)"),
     ("full", "full: every task (537), for comparing models closely"),
 ]
+
+# Other agents QuenchBench can run on the same model and tasks (the app's own list; each is installed separately)
+AGENTS = ("aider", "qwen-code", "opencode", "openhands", "mini-swe-agent", "codex", "goose", "crush", "custom")
 
 DONE = ("passed", "failed", "error", "skipped")
 APP_SUITE = {"quenchbench": "forge"}  # the id the app has used since before the name QuenchBench (every version knows it)
@@ -479,6 +486,12 @@ def main() -> None:
     ap.add_argument("--harness", action="append", default=[], metavar="KEY=VALUE",
                     help="one harness switch for this run, e.g. continue_nudge=false (repeatable; docs/FEATURES.md; "
                          "Local Quench 0.1.1 or newer)")
+    ap.add_argument("--agent", default="", metavar="NAME",
+                    help="QuenchBench: the agent that does the tasks, local-quench (default) or one to compare: "
+                         + ", ".join(AGENTS) + " (installed separately; Local Quench 0.1.2 or newer)")
+    ap.add_argument("--agent-cmd", default="", metavar="CMD",
+                    help="with --agent: the command that runs it ({model}, {base_url}, {api_key}, {prompt_file} are "
+                         "filled in); needed for --agent custom")
     ap.add_argument("--remove-images", action="store_true",
                     help="SWE-bench and Terminal-Bench: delete each task's container image after it (saves tens of GB)")
     ap.add_argument("--home", default=str(Path.home() / "QuenchBench"), help="folder for the app and the results")
@@ -530,6 +543,14 @@ def main() -> None:
             stop(f"--harness needs Local Quench 0.1.1 or newer; this one is {version}. Add --update.")
         for pair in args.harness:
             cmd += ["--harness", pair]
+    if args.agent and args.agent not in ("local-quench", "local-forge"):
+        if args.agent not in AGENTS:
+            stop(f"--agent {args.agent}: one of local-quench, {', '.join(AGENTS)}")
+        if suite[0] != "quenchbench":
+            stop("--agent runs on QuenchBench only.")
+        if version and version_tuple(version) < (0, 1, 2):
+            stop(f"--agent needs Local Quench 0.1.2 or newer; this one is {version}. Add --update once 0.1.2 is out.")
+        cmd += ["--agent", args.agent] + (["--agent-cmd", args.agent_cmd] if args.agent_cmd else [])
     if args.repeats > 1:
         if version and version_tuple(version) < (0, 1, 1):
             stop(f"--repeats needs Local Quench 0.1.1 or newer; this one is {version}. Add --update.")
