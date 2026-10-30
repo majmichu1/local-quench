@@ -1,0 +1,5 @@
+body { font-family: sans-serif; margin: 32px; max-width: 640px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 6px 8px; border-bottom: 1px solid #ddd; text-align: left; }
+.summary { display: grid; grid-template-columns: auto auto; gap: 4px 16px; width: max-content; }
+.summary dd { margin: 0; text-align: right; }

@@ -1,0 +1,4 @@
+body { font-family: sans-serif; margin: 32px; }
+.book { margin: 6px 0; }
+.book .title { font-weight: bold; }
+.book .year { color: #666; margin-left: 8px; }

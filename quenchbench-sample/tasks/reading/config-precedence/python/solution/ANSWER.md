@@ -1,0 +1,1 @@
+It listens on 9090: load_settings in settings.py applies APP_PORT after the ini values.

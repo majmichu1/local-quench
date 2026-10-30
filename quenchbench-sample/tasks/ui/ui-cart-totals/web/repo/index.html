@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Your cart</h1>
+    <p>Items: <span id="cart-count">0</span></p>
+  </header>
+  <table id="cart">
+    <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <form id="promo-form">
+    <label for="promo">Promo code</label>
+    <input id="promo" autocomplete="off">
+    <button id="apply-promo" type="submit">Apply</button>
+    <span id="promo-msg"></span>
+  </form>
+  <dl class="summary">
+    <dt>Subtotal</dt><dd id="subtotal"></dd>
+    <dt>Discount</dt><dd id="discount"></dd>
+    <dt>Shipping</dt><dd id="shipping"></dd>
+    <dt>Total</dt><dd id="total"></dd>
+  </dl>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

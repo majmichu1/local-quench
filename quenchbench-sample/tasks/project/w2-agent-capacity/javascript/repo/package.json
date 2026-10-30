@@ -1,0 +1,10 @@
+{
+  "name": "helpdesk",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "A small helpdesk ticket service",
+  "scripts": {
+    "test": "node --test"
+  }
+}
