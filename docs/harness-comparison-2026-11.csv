@@ -1,0 +1,27 @@
+section,task,language,local_quench_try1,local_quench_try2,local_quench_try3,pi_try1,pi_try2,pi_try3
+algorithms,grid-dijkstra,go,fail (time limit),fail (time limit),fail (time limit),fail (time limit),pass,fail (stopped by anti-loop package)
+algorithms,union-find,c,pass,pass,pass,fail (passed after the time limit),fail (passed after the time limit),fail (stopped by anti-loop package)
+bugfix,bash-log-rotate,bash,fail (time limit),fail (time limit),fail (time limit),fail (time limit),fail (time limit),fail (passed after the time limit)
+bugfix,binary-search,javascript,pass,pass,pass,pass,pass,fail (time limit)
+build,bash-set-e-build,bash,pass,pass,pass,fail (time limit),pass,fail (time limit)
+build,py-import-cycle,python,pass,pass,pass,pass,pass,pass
+data,unit-convert,rust,fail (time limit),fail (time limit),fail,fail,fail (stopped by anti-loop package),fail (time limit)
+data,w2-json-patch,javascript,fail (time limit),fail,fail,fail,fail,fail
+feature,c-ringbuf,c,pass,fail,fail,fail,fail (time limit),pass
+feature,go-cursor-pagination,go,fail (grader bug),pass,pass,fail (passed after the time limit),fail (time limit),fail (passed after the time limit)
+project,w2-agent-capacity,go,pass,fail (grader bug),fail,fail (stopped by anti-loop package),fail (stopped by anti-loop package),pass
+project,w2-csv-quoting,python,fail,pass,pass,pass,pass,pass
+reading,batch-complexity,rust,pass,pass,fail,pass,fail,pass
+reading,w2-pricing-pipeline,javascript,fail,fail,pass,pass,pass,fail
+refactor,dedupe-email-check,python,pass,pass,pass,pass,pass,pass
+refactor,link-store-interface,rust,fail,pass,fail,fail (stopped by anti-loop package),fail (stopped by anti-loop package),pass
+security,c-image-overflow,c,pass,fail,pass,fail (time limit),pass,fail (stopped by anti-loop package)
+security,c-strlcpy,c,pass,pass,pass,fail,fail,pass
+terminal,find-duplicates-nul,bash,fail,fail (time limit),fail (time limit),fail (time limit),fail (time limit),fail
+terminal,git-recover-deleted,bash,pass,pass,pass,pass,pass,pass
+testing,retry-backoff-tests,go,pass,pass,fail (grader bug),fail (passed after the time limit),fail (passed after the time limit),fail (time limit)
+testing,w2-resolver-tests,javascript,fail,fail,pass,fail (time limit),fail (stopped by anti-loop package),fail
+ui,ui-cart-totals,web,fail,fail,fail,fail (time limit),fail,fail (time limit)
+ui,ui-kanban-undo,web,fail (passed after the time limit),fail,fail (time limit),fail (stopped by anti-loop package),fail (time limit),fail (passed after the time limit)
+vague,config-file-vague,python,fail,fail,fail,fail,fail,pass
+vague,w2-rate-limit-vague,go,fail,fail,fail,fail,fail (stopped by anti-loop package),fail
