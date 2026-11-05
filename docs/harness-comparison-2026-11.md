@@ -4,7 +4,7 @@ We ran the same tasks with the same local model under two agent harnesses, Local
 [pi](https://github.com/earendil-works/pi), to see how much the harness changes what a small local model gets done.
 It is a first measurement, not a final one. Both runs had problems that came from my test machine and its setup,
 listed below. When both harnesses have been measured again under exactly the same conditions, this file and the
-[QuenchBench page](https://localquench.com/bench.html#harnesses) will be updated. Results can also be different with
+[QuenchBench page](https://localquench.com/leaderboard-harnesses.html) will be updated. Results can also be different with
 other versions of either harness and with other models.
 
 ## Setup
