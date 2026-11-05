@@ -32,7 +32,7 @@
   hidden checks and reference solutions, and `verify.py` to check them yourself: each starting project fails its
   checks and each reference solution passes them. The held-out tasks used for the final measurement stay private.
 - [`docs/harness-comparison-2026-11.md`](docs/harness-comparison-2026-11.md): a first comparison of Local Quench and
-  pi on QuenchBench Short with the same local model, per task, with what went wrong in both runs.
+  pi on QuenchBench Short with the same local model ([summary below](#first-harness-comparison-local-quench-and-pi)).
 - [`docs/FEATURES.md`](docs/FEATURES.md): every tool, every harness behaviour and the ablation switches
   that turn them off, to read QuenchBench results by.
 - The [issue tracker](https://github.com/majmichu1/local-quench/issues) for both, and
@@ -122,6 +122,58 @@ python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suit
 rest. The script checks every download against the release's SHA-256 checksum. Cloud
 providers read the key from `NVIDIA_API_KEY` or `OPENROUTER_API_KEY` (or ask for it); it is never
 saved.
+
+## First harness comparison: Local Quench and pi
+
+The same 26 QuenchBench Short tasks, three tries each, with the same local model (Spark X2.6 4B, Q8_0, LM Studio)
+under Local Quench and [pi](https://github.com/earendil-works/pi) with pi-tool-repair and pi-anti-doom-loop. It is a
+first measurement, not a final one: both runs had problems from my test machine and its setup, described in
+[the full write-up](docs/harness-comparison-2026-11.md). Once both are measured again under the same conditions, this
+is updated.
+
+|  | Local Quench | pi |
+|---|---|---|
+| Solved tries | 36 of 78 (46.2%) | 26 of 78 (33.3%) |
+| Likely range (95%) | 36 to 57% | 24 to 44% |
+| Model time per solved task | 35.5 min | 50.7 min |
+| Stopped by the time limit | 13 | 25 |
+
+The ranges overlap and part of the gap could still be chance, so read it as a first result.
+
+<details>
+<summary>Per task (solved tries out of three)</summary>
+
+| Task | Language | Local Quench | pi |
+|---|---|---|---|
+| algorithms/grid-dijkstra | go | 0/3 | 1/3 |
+| algorithms/union-find | c | 3/3 | 0/3 |
+| bugfix/bash-log-rotate | bash | 0/3 | 0/3 |
+| bugfix/binary-search | javascript | 3/3 | 2/3 |
+| build/bash-set-e-build | bash | 3/3 | 1/3 |
+| build/py-import-cycle | python | 3/3 | 3/3 |
+| data/unit-convert | rust | 0/3 | 0/3 |
+| data/w2-json-patch | javascript | 0/3 | 0/3 |
+| feature/c-ringbuf | c | 1/3 | 1/3 |
+| feature/go-cursor-pagination | go | 2/3 | 0/3 |
+| project/w2-agent-capacity | go | 1/3 | 1/3 |
+| project/w2-csv-quoting | python | 2/3 | 3/3 |
+| reading/batch-complexity | rust | 2/3 | 2/3 |
+| reading/w2-pricing-pipeline | javascript | 1/3 | 2/3 |
+| refactor/dedupe-email-check | python | 3/3 | 3/3 |
+| refactor/link-store-interface | rust | 1/3 | 1/3 |
+| security/c-image-overflow | c | 2/3 | 1/3 |
+| security/c-strlcpy | c | 3/3 | 1/3 |
+| terminal/find-duplicates-nul | bash | 0/3 | 0/3 |
+| terminal/git-recover-deleted | bash | 3/3 | 3/3 |
+| testing/retry-backoff-tests | go | 2/3 | 0/3 |
+| testing/w2-resolver-tests | javascript | 1/3 | 0/3 |
+| ui/ui-cart-totals | web | 0/3 | 0/3 |
+| ui/ui-kanban-undo | web | 0/3 | 0/3 |
+| vague/config-file-vague | python | 0/3 | 1/3 |
+| vague/w2-rate-limit-vague | go | 0/3 | 0/3 |
+
+Every try, with what happened when it failed: [harness-comparison-2026-11.csv](docs/harness-comparison-2026-11.csv).
+</details>
 
 ## FAQ
 
