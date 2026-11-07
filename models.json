@@ -2421,6 +2421,34 @@
    "notes": "Vendor-only (the card, 2026-11-04, webAI's internal harness, pass@1 at high effort). LiveCodeBench 81.6 is the verbose variant (version and window not recorded); balanced is the default download. Other card numbers: MATH-500 98.2, AIME 2026 88.3, GPQA Diamond 70.2, IFEval 91.8, IFBench 74.4 (verbose), HumanEval 93.2 (verbose). SWE-bench, tool use and agentic tasks were not evaluated; no tool-use training beyond Granite 4.2. Non-commercial licence.",
    "harness_prior": "guided",
    "harness_why": "8.8B reasoning model without agentic or tool-use training (the card): loop and planning help until measured"
+  },
+  {
+   "id": "mimo-v2-6-distill-qwen-9b",
+   "name": "MiMo-V2.6 Distill Qwen 9B",
+   "vendor": "Xiaomi",
+   "released": "2026-09",
+   "open_weights": true,
+   "params": "9B",
+   "local_class": "small",
+   "hybrid": true,
+   "scores": {
+    "swe_verified": 61.1,
+    "swe_pro": 44.6,
+    "terminal_bench_2_1": 37.1
+   },
+   "sources": {
+    "swe_verified": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+    "swe_pro": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B",
+    "terminal_bench_2_1": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B"
+   },
+   "provenance": {
+    "swe_verified": "vendor",
+    "swe_pro": "vendor",
+    "terminal_bench_2_1": "vendor"
+   },
+   "notes": "Vendor-only (the card, from the MiMo-V2.6 technical report): SWE-bench Verified and Pro avg@3, Terminal-Bench 2.1 avg@1; its base Qwen3.5-9B on the same rows: 60.0, 32.0, 27.0. An SFT checkpoint of Qwen3.5-9B on MiMo-V2.6 data, released for agentic RL research; MIT. Harness not named.",
+   "harness_prior": "guided",
+   "harness_why": "9B with agentic SFT (SWE-bench Verified 61.1, vendor): loop and planning help until measured"
   }
  ],
  "profiles": [
@@ -2458,6 +2486,33 @@
     "reasoning_budget": 0
    },
    "notes": "Model card https://huggingface.co/webAI-Official/TwIL-8B (webAI, 2026-11-04): 8.8B dense, from IBM Granite 4.2 8B, 131k context. Sampling 1.0 / 0.95; thinking on by default, reasoning_effort low allowed (scores lower). Strong at math and competitive code, weak on knowledge. Tool use, agentic tasks and SWE-bench were not evaluated by webAI: measure it before trusting it as a coding agent. Licence: webAI Non-Commercial 1.0."
+  },
+  {
+   "id": "mimo-v2.6-distill-qwen",
+   "label": "MiMo-V2.6 Distill (Qwen3.5 9B)",
+   "match": "mimo[-_ ]?v2[._-]?6[-_ ]?distill",
+   "thinking_on": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0
+   },
+   "thinking_off": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0
+   },
+   "enable_thinking": true,
+   "implicit_think": true,
+   "history_reasoning": "field",
+   "slash": "mimo-distill",
+   "reasoning_budget": 2048,
+   "notes": "Model card https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B (Xiaomi, MIT): an SFT of Qwen3.5-9B on MiMo-V2.6 data for coding and agent work, released as a starting point for agentic RL. Sampling 0.6 / 0.95 / top-k 20 (generation_config.json), thinking on by default, 262k context. Vendor numbers (avg@3): SWE-bench Verified 61.1, SWE-bench Pro 44.6; Terminal-Bench 2.1 37.1 (avg@1)."
   }
  ]
 }
