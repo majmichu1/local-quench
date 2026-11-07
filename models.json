@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-10-23",
+ "updated": "2026-11-07",
  "benchmarks": {
   "swe_verified": {
    "name": "SWE-bench Verified",
@@ -2399,6 +2399,65 @@
     "terminal_bench_2_1": "vendor"
    },
    "notes": "Vendor-only; Apache 2.0."
+  },
+  {
+   "id": "twil-8b",
+   "name": "TwIL-8B",
+   "vendor": "webAI",
+   "released": "2026-11",
+   "open_weights": true,
+   "params": "8.8B",
+   "local_class": "small",
+   "hybrid": true,
+   "scores": {
+    "livecodebench": 81.6
+   },
+   "sources": {
+    "livecodebench": "https://huggingface.co/webAI-Official/TwIL-8B"
+   },
+   "provenance": {
+    "livecodebench": "vendor"
+   },
+   "notes": "Vendor-only (the card, 2026-11-04, webAI's internal harness, pass@1 at high effort). LiveCodeBench 81.6 is the verbose variant (version and window not recorded); balanced is the default download. Other card numbers: MATH-500 98.2, AIME 2026 88.3, GPQA Diamond 70.2, IFEval 91.8, IFBench 74.4 (verbose), HumanEval 93.2 (verbose). SWE-bench, tool use and agentic tasks were not evaluated; no tool-use training beyond Granite 4.2. Non-commercial licence.",
+   "harness_prior": "guided",
+   "harness_why": "8.8B reasoning model without agentic or tool-use training (the card): loop and planning help until measured"
+  }
+ ],
+ "profiles": [
+  {
+   "id": "twil-8b",
+   "label": "TwIL-8B (webAI)",
+   "match": "(?<![a-z0-9])twil[-_ ]?8b",
+   "thinking_on": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 0,
+    "min_p": 0.0,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0
+   },
+   "thinking_off": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 0,
+    "min_p": 0.0,
+    "repeat_penalty": 1.0,
+    "presence_penalty": 0.0
+   },
+   "enable_thinking": true,
+   "implicit_think": true,
+   "history_reasoning": "field",
+   "slash": "twil",
+   "reasoning_budget": 0,
+   "efforts": [
+    "low"
+   ],
+   "harness": {
+    "thinking_cap": 0,
+    "max_output_tokens": 0,
+    "reasoning_budget": 0
+   },
+   "notes": "Model card https://huggingface.co/webAI-Official/TwIL-8B (webAI, 2026-11-04): 8.8B dense, from IBM Granite 4.2 8B, 131k context. Sampling 1.0 / 0.95; thinking on by default, reasoning_effort low allowed (scores lower). Strong at math and competitive code, weak on knowledge. Tool use, agentic tasks and SWE-bench were not evaluated by webAI: measure it before trusting it as a coding agent. Licence: webAI Non-Commercial 1.0."
   }
  ]
 }
