@@ -1,0 +1,37 @@
+Local Quench
+Copyright (c) 2026 Michał Majkowski. All rights reserved.
+
+End user license
+
+1. You may download, install and use Local Quench free of charge, for private and for
+   commercial work, on any number of your own computers and devices.
+
+2. You may not sell, rent or redistribute Local Quench, in whole or in part, or publish
+   modified copies of it, without written permission. You may not remove copyright or
+   license notices. The QuenchBench tasks in Local Quench (their prompts, starting code,
+   hidden tests and reference solutions) are part of it: you may run them with the app, but
+   not extract, publish or share them, or use them to train or fine-tune models, without
+   written permission. Your own benchmark results are yours to share.
+
+3. Local Quench contains third-party components, each under its own license. They are
+   listed with their license texts in THIRD_PARTY_NOTICES.txt, shipped with every build.
+   Nothing in this license limits your rights under those licenses. In particular, where a
+   build includes the Qt libraries (PySide6, Qt, Qt WebEngine; the Linux build), they are
+   used under the GNU Lesser General Public License version 3: you may replace them in your
+   copy with your own builds of the same libraries, and you may reverse engineer Local Quench
+   to the extent needed to debug such replacements. THIRD_PARTY_NOTICES.txt names the exact
+   versions shipped and where their source code is available.
+
+4. Code that Local Quench or a model writes into your projects is yours. Local Quench claims
+   no rights to it.
+
+5. Local Quench is provided "as is", without warranty of any kind, to the extent permitted
+   by law. It runs commands and changes files when you tell it to; keep backups and review
+   what it does. The author is not liable for damage caused by its use, except where the
+   law does not allow such a limitation, in particular for damage caused intentionally.
+
+6. Sharing chats and benchmark results is governed by the sharing terms shown in the app
+   and by the privacy policy on the website. Nothing is sent without your consent.
+
+7. Polish law applies. If you are a consumer, this does not take away the protection
+   given to you by the law of your country of residence.
