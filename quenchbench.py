@@ -23,7 +23,9 @@ Needs Python 3.9+ and nothing else. Everything (the app, settings, results) stay
 Results are not uploaded anywhere. To put a result on the public leaderboard, let the script copy the
 run into the Local Quench app at the end, then share it from the app (Benchmarks).
 
-Windows 10/11 and 64-bit Linux. No macOS build yet.
+Windows 10/11 and 64-bit Linux (x86-64). On a Mac the script cannot fetch the app (the macOS beta is not in the release
+manifest it reads): install the macOS beta from https://localquench.com/download.html and start QuenchBench from the
+Benchmarks tab of the app.
 """
 
 from __future__ import annotations
@@ -68,6 +70,7 @@ SUITES = [  # id, label, needs Docker or Podman, free disk space it needs (GB)
 
 SIZES = [  # QuenchBench only; the same names and numbers as the app and localquench.com/bench.html
     ("smoke", "ultra quick: one task per kind of work (13), about one to two hours on a laptop GPU"),
+    ("short", "short: two tasks per kind of work (26)"),
     ("quick", "quick: one task per kind of work and language (63)"),
     ("full", "full: every task (537), for comparing models closely"),
 ]
@@ -133,8 +136,9 @@ def platform_key() -> str:
         return "windows"
     if sys.platform.startswith("linux") and platform.machine() in ("x86_64", "AMD64"):
         return "linux-appimage"
-    stop("Local Quench has builds for Windows (64-bit) and Linux (x86_64) only, so the benchmark cannot run "
-         "on this computer yet.")
+    stop("This script downloads the Windows (64-bit) and Linux (x86_64) builds of Local Quench only, so it cannot run "
+         "the benchmark on this computer. On a Mac, install the macOS beta from https://localquench.com/download.html "
+         "and start QuenchBench from the Benchmarks tab of the app.")
     return ""
 
 
@@ -446,7 +450,9 @@ def app_bench_dir() -> Path:
         base = Path(os.environ.get("APPDATA") or Path.home() / "AppData" / "Roaming")
     else:
         base = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local" / "share")
-    return base / "local-forge" / "bench"
+    # 0.1.31 and newer: LocalQuench (Windows) or local-quench (Linux); before: local-forge. The one that exists wins.
+    names = ("LocalQuench", "local-forge") if sys.platform == "win32" else ("local-quench", "local-forge")
+    return next((base / n / "bench" for n in names if (base / n).is_dir()), base / names[0] / "bench")
 
 
 def offer_to_app(folder: Path, yes: bool) -> None:

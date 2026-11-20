@@ -1,7 +1,7 @@
 # What Local Quench does
 
-Everything here exists in Local Quench 0.1.1 and can be seen in the app: a tool the model calls, a setting,
-or a note the harness adds to the conversation. Three parts:
+This is what Local Quench does as of 20 November 2026 (release 0.1.31 and the work for 0.1.40). Everything here can
+be seen in the app: a tool the model calls, a setting, or a note the harness adds to the conversation. Three parts:
 
 1. [Tools](#tools): what the model can call.
 2. [Harness behaviours](#harness-behaviours): what the harness does on its own to keep a model on track.
@@ -9,8 +9,8 @@ or a note the harness adds to the conversation. Three parts:
 
 ## Tools
 
-23 tools, plus `rename_symbol` when a language server for the project is installed. `mcp` and `load_skill` are
-offered only when an MCP server or a skill is configured. Which tools a model gets depends on the tool set
+26 tools, plus `rename_symbol` when a language server for the project is installed. `mcp` and `load_skill` are
+offered only when an MCP server or a skill is configured, and `merge_copy` only in a chat that works in a separate copy. Which tools a model gets depends on the tool set
 (`tool_set`): **auto** (the default) gives the light tier the light set and strong models every tool.
 
 | Tool | What it does |
@@ -26,6 +26,7 @@ offered only when an MCP server or a skill is configured. Which tools a model ge
 | `edit_file` | Edits by exact search and replace, or by line range with anchor lines |
 | `create_file` | Creates or overwrites a file |
 | `delete_file` | Deletes a file (undoable) |
+| `undo_edits` | Puts a file back the way it was before the model's first change to it in this chat; the user's own changes are kept |
 | `run_command` | A shell command in the project folder, optionally in the background; long output is trimmed but keeps errors |
 | `check_process` | Status and new output of a background command; can stop it |
 | `wait_until` | Waits for an outside condition (a lock, another build, a server) by re-running a check |
@@ -36,6 +37,8 @@ offered only when an MCP server or a skill is configured. Which tools a model ge
 | `fetch_webpage` | A web page as Markdown |
 | `task` | Read-only research by sub-agents, up to 8 in parallel within what the model server allows |
 | `todo_write` | The visible task list |
+| `security_scan` | Quench Protect, read-only: scans a folder or file of the project for leaked secrets and risky code; secrets come back masked |
+| `merge_copy` | Only in a chat that works in a separate copy of the repository and only when the user's message asks for it: commits the copy's changes and merges its branch |
 | `mcp` | A connected MCP server |
 | `load_skill` | The instructions of a skill |
 | `rename_symbol` | A rename across the project through the language server (only when one is installed) |
@@ -44,8 +47,10 @@ offered only when an MCP server or a skill is configured. Which tools a model ge
 `find_files`, `repo_map`, `find_symbol`, `find_references`, `git`, `web_search`, `fetch_webpage`) and
 `run_command` limited to read-only commands (`ls`, `grep`, `cat`, `git log`...).
 
-**The light tool set** (`tool_set=light`, the light tier's default) is 15 tools: the core set plus
-`inspect_file_outline`, `git`, `web_search` and `fetch_webpage`. **The core tool set** (`tool_set=core`) is 11
+**The light tool set** (`tool_set=light`, the light tier's default) is 16 tools: the core set plus
+`inspect_file_outline`, `git`, `undo_edits`, `web_search` and `fetch_webpage`. **The minimal tool set**
+(`tool_set=minimal`, the Minimal harness) is 5 tools: `read_file`, `edit_file`, `create_file`, `run_command`,
+`check_process`. **The core tool set** (`tool_set=core`) is 11
 tools: `read_file`, `edit_file`, `create_file`, `delete_file`, `list_dir`, `search_code`, `find_files`,
 `run_command`, `run_tests`, `check_process`, `todo_write`. In `whole_file` edit mode `edit_file` is left out
 (the model writes files in its reply), and in `search_replace` mode `edit_file` is the three-field tool the prompt
@@ -140,7 +145,7 @@ What the harness does without being asked. "Switch" names the setting that turns
 | --- | --- | --- |
 | Approval modes | `plan`: read and investigate only. `ask`: confirm commands and deletions. `safe`: read-only commands run, others are asked. `dangerous`: nothing is asked. `autopilot`: nothing is asked and the model decides when to plan | Settings |
 | Outside the project | Asks before a tool or command touches anything outside the project folder (once, for the session, the chat or the project) | Settings |
-| Sandbox (Linux) | Commands run in bubblewrap: the system is read-only, only the project and a scratch folder are writable. Network stays available. On Windows there is no sandbox: the approval mode is the protection | `sandbox_commands` |
+| Sandbox (Linux) | Commands run in bubblewrap: the system is read-only, only the project and a scratch folder are writable. Network stays available. On Windows and macOS there is no sandbox yet: the approval mode is the protection | `sandbox_commands` |
 | Safe commit | `git commit` without a path commits tracked changes and only the files this chat created, and lists what it left out | always |
 | Undo | Every edit is recorded: `/undo` reverts it, and a conversation can be rewound to an earlier message with its file changes | always |
 
@@ -179,7 +184,7 @@ python3 quenchbench.py ... --harness harness_profile=bare   # the baseline: ever
 | `thinking_cap` | Reasoning tokens before the model is asked to act (0 = never) | 8192, 0, any number |
 | `edit_diagnostics` | Diagnostics after edits | fast, full, off |
 | `edit_format` | Edit format | auto, blocks, search_replace, apply_patch, whole_file |
-| `tool_set` | All tools or the core 10 | full, core |
+| `tool_set` | Which tools the model gets (auto: the app picks per model) | full, light, core, minimal |
 | `repo_map_tokens` | Size of the repo map (0 = none) | 1024, 0, 2048 |
 | `lsp` | A language server when installed | off, auto |
 
@@ -191,7 +196,7 @@ text, aliases, JSON, shell repair, edit matching, syntax rollback, output trimmi
 and compaction. These have no switch yet, so "with and without the harness" means: with every switch on,
 and with every switch off.
 
-**Reading results.** A QuenchBench quick run is 63 tasks, ultra quick 13. One run of 13 tasks cannot show
+**Reading results.** A QuenchBench quick run is 63 tasks, short 26, ultra quick 13. One run of 13 tasks cannot show
 the effect of one switch: compare the default harness with `bare` first, use `--repeats 3` or more, and only
 then single switches. The app shows a paired significance test for ablation runs.
 

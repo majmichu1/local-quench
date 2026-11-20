@@ -32,7 +32,7 @@ other versions of either harness and with other models.
 |  | Local Quench | pi |
 |---|---|---|
 | Solved tries | 36 of 78 (46.2%) | 26 of 78 (33.3%) |
-| Likely range (95%) | 36 to 57% | 24 to 44% |
+| Likely range (95%, over the 26 tasks) | 29 to 64% | 18 to 52% |
 | Per round of tries (1st, 2nd, 3rd) | 12, 12, 12 | 7, 9, 10 |
 | Median time per task | 15.1 min | 15.4 min |
 | Model time per solved task | 35.5 min | 50.7 min |
@@ -42,9 +42,11 @@ other versions of either harness and with other models.
 | Steps per task (mean) | 24.2 | 21.5 |
 | Largest context | 51,549 | 45,841 |
 
-By task: both solved 13 tasks at least once, only Local Quench 4, only pi 2, neither 7. With 78 tries each, part of
-the gap could still be chance (a paired test gives p of about 0.1) and the ranges overlap, so we read it as a first
-result, not a verdict.
+By task: both solved 13 tasks at least once, only Local Quench 4, only pi 2, neither 7. The three tries of one task are not
+independent, so the verdict counts tasks, not tries: Local Quench did better on 8 tasks (it solved more of the three tries
+than pi), pi on 4, and 14 came out the same (sign test, p = 0.39). The likely range is the 95% range for the share of tries
+solved, worked out over the tasks. **Cannot tell yet**: the ranges overlap and the gap could be chance. We read this as a
+first result, not a verdict. The same numbers are on [localquench.com/leaderboard-harnesses.html](https://localquench.com/leaderboard-harnesses.html).
 
 ## Per task
 

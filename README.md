@@ -6,7 +6,8 @@
 
 <p align="center">
   An AI coding agent for local LLMs, on the GPU you already have.<br>
-  Runs your local models in LM Studio, llama.cpp, Ollama or vLLM. Your code stays on your machine.
+  Runs your local models itself with a built-in llama.cpp engine, or through LM Studio, Ollama or vLLM. Your code stays on your machine.<br>
+  Windows, Linux and Mac (beta). Android, iPhone and iPad as a remote.
 </p>
 
 <p align="center">
@@ -23,7 +24,7 @@
 
 ## In this repository
 
-- **Local Quench**, the app: builds for Windows, Linux and Android in
+- **Local Quench**, the app: builds for Windows, Linux, Mac (beta) and Android in
   [Releases](https://github.com/majmichu1/local-quench/releases).
 - **[`quenchbench.py`](quenchbench.py)**, a benchmark runner: measure any local model (or cloud API) on
   QuenchBench, SWE-bench Verified, SWE-bench Multilingual, Terminal-Bench 2.0 or Aider Polyglot with
@@ -31,6 +32,8 @@
 - [`quenchbench-sample/`](quenchbench-sample/): 26 QuenchBench tasks (two per section, from the dev split) with their
   hidden checks and reference solutions, and `verify.py` to check them yourself: each starting project fails its
   checks and each reference solution passes them. The held-out tasks used for the final measurement stay private.
+- [`docs/bridge.md`](docs/bridge.md) and [`docs/advisor.md`](docs/advisor.md): how Agent Bridge (Claude Code hands a task to your
+  local model) and Ask a Bigger Model (your local model asks a stronger one for advice) work.
 - [`docs/harness-comparison-2026-11.md`](docs/harness-comparison-2026-11.md): a first comparison of Local Quench and
   pi on QuenchBench Short with the same local model ([summary below](#first-harness-comparison-local-quench-and-pi)).
 - [`docs/FEATURES.md`](docs/FEATURES.md): every tool, every harness behaviour and the ablation switches
@@ -50,31 +53,36 @@ and steers the model back, and every one of these rules can be switched off and 
 
 ## Features
 
-- **Agent loop with real tools.** File edits with undo, shell commands in a sandbox, tests, git, a
+- **Agent loop with real tools.** File edits with undo, shell commands (in a sandbox on Linux), tests, git, a
   repo map, an in-app browser preview, sub-agents for exploring large repos.
-- **Built for local servers.** LM Studio, llama.cpp (`llama-server`), Ollama and vLLM. Context size,
+- **Runs the model itself.** Pick a model: Local Quench downloads it, runs it with its built-in llama.cpp engine and
+  says plainly what fits your computer. LM Studio, llama.cpp (`llama-server`), Ollama and vLLM work too. Context size,
   KV cache and thinking settings per model. Cloud models (Claude, GPT, Gemini, OpenRouter, NVIDIA) work
   with your own key.
 - **QuenchBench.** A coding benchmark inside the app: which kinds of work your model on your card
   handles, needs review for, or should not be trusted with. Plus SWE-bench, Terminal-Bench and Aider
   Polyglot runs.
 - **Model advisor.** Which models and quantizations fit your VRAM and how fast they will run.
-- **Phone and tablet.** Check on a long task or start a new one from your phone over Tailscale.
+- **Agent Bridge.** Claude Code can hand a coding task to your local model over MCP and read back the result and
+  the diff. Tested with Claude Code and Claude Desktop; Codex not yet. [Setup](docs/bridge.md)
+- **Ask a Bigger Model.** When your local model is stuck, it can ask a stronger one (Claude Code, Codex, Gemini CLI or
+  Qwen Code on your plan, or a provider) for advice. Off by default, approved per question. [How it works](docs/advisor.md)
+- **Phone and tablet.** Check on a long task or start a new one from your phone or tablet: directly from the Android
+  app (no account), or through Tailscale, which also works on iPhone and iPad.
 - **Costs.** What every chat would have cost on a cloud model, next to your electricity.
 
 ## Requirements
 
 | | |
 | --- | --- |
-| **System** | Windows 10 or 11 (64-bit), or 64-bit Linux (Ubuntu 22.04+, Fedora, Arch, Bazzite, Mint...) |
-| **Model server** | LM Studio, llama.cpp, Ollama or vLLM, or an API key for a cloud provider |
+| **System** | Windows 10 or 11 (64-bit), 64-bit Linux (Ubuntu 22.04+, Fedora, Arch, Bazzite, Mint...), or a Mac with Apple Silicon (M1 or newer; beta) |
+| **Model** | One Local Quench runs itself (built-in llama.cpp engine), one served by LM Studio, llama.cpp, Ollama or vLLM, or an API key for a cloud provider |
 | **Graphics card** | Whatever runs your model. 8 GB of VRAM is enough to start; the advisor tells you what fits |
-| **Phone (optional)** | Android 8+ with the app, or Safari on iPhone and iPad, plus Tailscale |
+| **Phone (optional)** | Android 8+ with the app (direct, or through Tailscale), or Safari on iPhone and iPad through Tailscale |
 
 ## Install
 
-**Windows:** download `LocalQuench-windows-x64.zip`, unzip it anywhere and start `LocalQuench.exe`
-(`local-forge.exe` in 0.1.0).
+**Windows:** download `LocalQuench-windows-x64.zip`, unzip it anywhere and start `LocalQuench.exe`.
 
 **Linux:** download `LocalQuench-<version>-x86_64.AppImage`, make it executable and run it:
 
@@ -83,15 +91,36 @@ chmod +x LocalQuench-*-x86_64.AppImage
 ./LocalQuench-*-x86_64.AppImage
 ```
 
-**Android:** install `LocalQuench.apk` (`LocalForge.apk` in 0.1.0) and pair it with the desktop app (Settings > Phone & tablet).
+**Mac (beta, Apple Silicon):** download `LocalQuench-<version>-macos-arm64-beta.zip`, unzip it and move Local Quench to
+Applications. The app is not signed yet, so macOS asks you once to allow it; the steps are on the
+[download page](https://localquench.com/download.html). The beta does not update itself.
+
+**Android:** install `LocalQuench.apk` and pair it with the desktop app (Settings > Phone & tablet).
 
 Everything is on the [download page](https://localquench.com/download.html) and in the
-[releases](https://github.com/majmichu1/local-quench/releases). The app updates itself.
+[releases](https://github.com/majmichu1/local-quench/releases). Windows and Linux update themselves.
+
+## Use your local GPU from Claude Code
+
+Keep Claude Code for planning and review, and let a local model do the edit-and-test loop:
+
+1. In Local Quench: Settings, Agent bridge, turn on "Allow other agents to start tasks". The default limit,
+   Auto (safe), runs edits and read-only commands; every other command waits for you.
+2. Add it to Claude Code with the command shown on that page (`claude mcp add local-quench ...`).
+   Optional: `/plugin install local-quench --marketplace majmichu1/local-quench` adds a skill that tells Claude
+   Code when and how to delegate.
+3. Ask Claude Code: "Use local-quench to have my local model fix the failing test in this repo, then show me the diff."
+
+What leaves your computer: the task text, the result, the list of changed files and commands, the diff and, if
+Claude Code asks for it, the task's transcript go back to Claude Code and from there to Anthropic. Delegated
+execution itself runs locally. Approvals are answered by you in Local Quench, not by Claude Code. Use 0.1.21 or
+newer. Full guide, including what the bridge does not protect against: [docs/bridge.md](docs/bridge.md).
 
 ## Benchmark your model from the command line
 
 `quenchbench.py` runs QuenchBench, SWE-bench Verified, SWE-bench Multilingual, Terminal-Bench 2.0 or
-Aider Polyglot on any model your local server (or a cloud API) serves. It needs only Python 3.9+:
+Aider Polyglot on any model your local server (or a cloud API) serves. It needs only Python 3.9+ and runs on Windows and
+Linux (x86-64). On a Mac it cannot fetch the app yet: start QuenchBench from the Benchmarks tab of the macOS beta instead:
 
 ```bash
 curl -O https://raw.githubusercontent.com/majmichu1/local-quench/main/quenchbench.py
@@ -111,7 +140,7 @@ python3 quenchbench.py --server http://localhost:1234 --model qwen3.8-27b --suit
 
 | Benchmark | `--suite` | Needs |
 | --- | --- | --- |
-| QuenchBench: which kinds of coding work the model handles | `quenchbench` (`--size smoke`, `quick` or `full`) | the languages' toolchains (checked before the start) |
+| QuenchBench: which kinds of coding work the model handles | `quenchbench` (`--size smoke`, `short`, `quick` or `full`) | the languages' toolchains (checked before the start) |
 | SWE-bench Verified, 500 Python issues | `swe-verified` | Docker or Podman |
 | SWE-bench Multilingual, 300 issues in 9 languages (beta) | `swe-multilingual` | Docker or Podman |
 | Terminal-Bench 2.0, 89 tasks (beta) | `terminal-bench-2` | Docker or Podman |
@@ -134,11 +163,12 @@ is updated.
 |  | Local Quench | pi |
 |---|---|---|
 | Solved tries | 36 of 78 (46.2%) | 26 of 78 (33.3%) |
-| Likely range (95%) | 36 to 57% | 24 to 44% |
+| Likely range (95%) | 29 to 64% | 18 to 52% |
 | Model time per solved task | 35.5 min | 50.7 min |
 | Stopped by the time limit | 13 | 25 |
 
-The ranges overlap and part of the gap could still be chance, so read it as a first result.
+Counted per task (the three tries of one task are not independent), Local Quench did better on 8 tasks, pi on 4 and 14
+came out the same (sign test, p = 0.39). **Cannot tell yet**: the ranges overlap and the gap could be chance.
 
 <details>
 <summary>Per task (solved tries out of three)</summary>
@@ -183,12 +213,12 @@ Every try, with what happened when it failed: [harness-comparison-2026-11.csv](d
 data sharing, which is off until you say yes, and asks again per benchmark result. Details in the
 [privacy policy](PRIVACY.md).
 
-**Which model should I use?** Open the model advisor in the app, enter your graphics card, and run a
+**Which model should I use?** Open the Model Advisor in the app, enter your graphics card, and run a
 quick QuenchBench on the candidates. Results on your own hardware beat any leaderboard.
 
 **Is the source code available?** No. This repository holds the releases, the issue tracker and the
-benchmark script. The QuenchBench tasks are not published on their own: they ship inside the app, where the
-sandbox hides them from the commands a model runs, and every task file carries a canary so model makers can
+benchmark script. The QuenchBench tasks are not published on their own: they ship inside the app, the hidden
+checks are copied in only after the agent has finished, and every task file carries a canary so model makers can
 keep them out of training data.
 
 ## Feedback
